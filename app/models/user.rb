@@ -12,4 +12,6 @@ class User < ApplicationRecord
   has_many :desired_items, through: :orders
   # items a user has offered
   has_many :offered_items, through: :orders
+
+  has_one_attached :photo
 end
