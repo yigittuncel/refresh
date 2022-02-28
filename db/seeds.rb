@@ -1,29 +1,24 @@
 require "open-uri"
 
+Item.destroy_all
+puts "Previous items deleted..."
+
+Outfit.destroy_all
+puts "Previous outfits deleted..."
+
 User.destroy_all
 puts "Previous users deleted..."
 
-users = Array.new(14)
+users = Array.new(3)
 
 user_photos = [
   "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641496329/rksezyk6ndmyjuh3jp8b.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641197640/tltl66uk36iuhxjmt4wr.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641741818/rqxqd6d7kvehd8gfzj4z.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641194769/es5y4oty1ej25pmbckq6.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641489025/v0cccoyg5qgwifydqhlp.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643376514/nfaf0gwsk3zgcnaodrtk.jpg",
-  "https://avatars.githubusercontent.com/u/28245098?v=4",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641514195/rqald3eqzzvkqqycd21r.jpg",
   "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643622347/ekjbgb0bi3ac6zg3nn1t.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641735078/pyafw4bavxfeqmb0vj7c.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641554758/itw2hdjxge7nonvpoqae.jpg",
-  "https://avatars.githubusercontent.com/u/97020679?v=4",
   "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641491612/phy5oue4p0ftrjl3nnu7.jpg"
 ]
-nicknames = ["Christina", "Anna", "Romain", "Melissa", "Sophie", "Michelle", "Fotios", "Nicola", "Michael", "Mario", "Maximilian", "Hasib", "Sankar", "Yigit"]
-user_email = ["christina@borensky.com", "anna@eiden.com", "romain@gille.com", "melissa@hauck.com", "sophie@hadeln.com", "michelle@knolly.com", "fotios@kolytoumpas.com", "nicola@pilcher.com", "michael@pitopoulakis.com", "mario@rodriguez-gonzalez.com", "maximilian@scheider.com", "hasib@Selimovic.com", "sankar@ganesh-subramanian.com", "yigit@tuncel.com"]
-user_password = ["secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret"]
+nicknames = ["Christina", "Mario", "Yigit"]
+user_email = ["christina@borensky.com", "mario@rodriguez-gonzalez.com", "yigit@tuncel.com"]
+user_password = ["secret", "secret", "secret"]
 
 users.each_with_index do |u, index|
   user = User.new(
@@ -62,7 +57,7 @@ item_colors = ["brown", "light grey", "mint blue", "yellow", "blue", "pink"]
 
 items = Array.new(6)
 
-items.each_with_index do |t, index|
+items.each_with_index do |i, index|
   item = Item.new(
     name: item_names[index],
     description: item_descriptions[index],
@@ -73,8 +68,65 @@ items.each_with_index do |t, index|
 
   item_photo = URI.open(item_photos[index])
   item.photo.attach(io: item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.all.sample
+  item.user = User.first
   item.save!
   puts "Item #{item.name} created!"
-
 end
+
+
+outfit_photos = [
+  "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+  "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80"
+]
+
+outfit_descriptions = [
+  "nice outfit",
+  "do you like my outfit?"
+]
+
+outfits = Array.new(2)
+
+outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: outfit_descriptions[index]
+  )
+
+  outfit_photo = URI.open(outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.first
+  outfit.save!
+  puts "Outfit #{outfit.description} created!"
+end
+
+outfit1 = Outfit.all[0]
+outfit2 = Outfit.all[1]
+
+ItemOutfit.create!(
+  outfit: outfit1,
+  item: Item.all[0]
+)
+
+ItemOutfit.create!(
+  outfit: outfit1,
+  item: Item.all[1]
+)
+
+ItemOutfit.create!(
+  outfit: outfit1,
+  item: Item.all[2]
+)
+
+ItemOutfit.create!(
+  outfit: outfit2,
+  item: Item.all[3]
+)
+
+ItemOutfit.create!(
+  outfit: outfit2,
+  item: Item.all[4]
+)
+
+ItemOutfit.create!(
+  outfit: outfit2,
+  item: Item.all[5]
+)
