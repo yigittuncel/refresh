@@ -6,4 +6,7 @@ class Item < ApplicationRecord
 
   has_many :item_outfits
   has_many :outfits, through: :item_outfits
+
+  has_one_attached :photo
+
 end
