@@ -14,6 +14,4 @@ class User < ApplicationRecord
   has_many :offered_items, through: :orders
 
   has_one_attached :photo
-
-  validates :nickname, presence: true
 end
