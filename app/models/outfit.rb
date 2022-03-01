@@ -3,7 +3,6 @@ class Outfit < ApplicationRecord
 
   has_many :item_outfits, dependent: :destroy
   has_many :items, through: :item_outfits
-
   has_one_attached :photo
 
 end
