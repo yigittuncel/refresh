@@ -29,29 +29,22 @@
 
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="outfit<%= outfit.id %>Modal" tabindex="-1" aria-labelledby="outfit<%= outfit.id %>ModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
+<div class="modal fade p-0" id="outfit<%= outfit.id %>Modal" tabindex="-1" aria-labelledby="outfit<%= outfit.id %>ModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen-md-down ">
+    <div class="modal-content py-3">
+      <div class="modal-header border-0 py-2">
         <h5 class="modal-title" id="outfit<%= outfit.id %>ModalLabel">Items in this outfit</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <div class="modal-body">
-        <div class="container-fluid">
-          <div class="row">
-            <% outfit.items.each do |item| %>
-              <%= render partial: "shared/item_card", locals: { item: item } %>
-            <% end %>
-          </div>
+      <div class="modal-body m-0 py-4 px-2">
+        <div class="d-flex flex-row">
+          <% outfit.items.each do |item| %>
+            <%= render partial: "shared/item_card", locals: { item: item } %>
+          <% end %>
         </div>
       </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <%# <button type="button" class="btn btn-primary">Save changes</button> %>
-      </div>
     </div>
   </div>
 </div>
