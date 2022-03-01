@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def feed
     @items = Item.all
+    @outfits = Outfit.all
   end
 end
