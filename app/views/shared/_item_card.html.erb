@@ -3,6 +3,6 @@
        style="background-image:url(<%= cl_image_path item.photo.key %>)">
   </div>
   <div class="card-product-infos">
-    <p><%= item.name %></p>
+    <%= link_to item.name, "#", class:"stretched-link" %>
   </div>
 </div>
