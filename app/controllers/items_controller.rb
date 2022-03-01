@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
-<<<<<<< HEAD
   before_action :set_items, only: [:show]
 
   def show
-=======
+  end
+
   def new
     @item = Item.new
   end
@@ -17,17 +17,15 @@ class ItemsController < ApplicationController
     else
       render :new
     end
->>>>>>> master
   end
 
   private
 
-<<<<<<< HEAD
   def set_items
     @item = Item.find(params[:id])
-=======
+  end
+
   def params_item
     params.require(:item).permit(:name, :description, :brand, :size, :color, :photo)
->>>>>>> master
   end
 end
