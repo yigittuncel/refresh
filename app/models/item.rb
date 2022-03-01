@@ -8,5 +8,4 @@ class Item < ApplicationRecord
   has_many :offering_orders, foreign_key: "offered_item_id", class_name: 'Orders'
 
   has_one_attached :photo
-
 end
