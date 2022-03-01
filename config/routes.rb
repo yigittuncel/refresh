@@ -2,7 +2,5 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#feed'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :items, only: [:index, :show, :new, :create] do
-    resources :orders, only [:create]
-  end
+  resources :items, only: [:show]
 end
