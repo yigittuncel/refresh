@@ -1,0 +1,27 @@
+<div class="card position-relative mb-4">
+
+  <div class="outfit-item-count btn btn-success rounded-pill position-absolute">
+    <%= Outfit.first.items.count %> <i class="fas fa-tshirt"></i>
+  </div>
+
+  <%= cl_image_tag Outfit.first.photo.key, class: "" %>
+
+  <div class="card-body">
+
+    <div class="card-user d-flex align-items-center ">
+
+      <%= cl_image_tag Outfit.first.user.photo.key, class:"avatar me-3" %>
+      <h5 class="d-inline m-0"><%= Outfit.first.user.nickname %></h5>
+
+    </div>
+
+    <div class="card-text">
+
+      <p class="py-4 text-break m-0"><%= Outfit.first.description %></p>
+      <p class="text-muted m-0">Posted <%= Outfit.first.created_at %> days/hours/minutes ago</p>
+
+    </div>
+
+  </div>
+
+</div>
