@@ -1,5 +1,8 @@
 require "open-uri"
 
+Order.destroy_all
+puts "Previous orders deleted..."
+
 Item.destroy_all
 puts "Previous items deleted..."
 
