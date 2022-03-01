@@ -1,8 +1,5 @@
 class ItemsController < ApplicationController
-<<<<<<< HEAD
-=======
   skip_before_action :authenticate_user!, only: [:show]
->>>>>>> master
   before_action :set_items, only: [:show]
 
   def show
@@ -32,5 +29,4 @@ class ItemsController < ApplicationController
   def params_item
     params.require(:item).permit(:name, :description, :brand, :size, :color, :photo)
   end
-
 end
