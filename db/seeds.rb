@@ -1,5 +1,8 @@
 require "open-uri"
 
+Order.destroy_all
+puts "Previous orders deleted..."
+
 Item.destroy_all
 puts "Previous items deleted..."
 
@@ -51,7 +54,7 @@ item_descriptions = [
   "Socks in a soft, fine-knit cotton blend with elasticated tops.",
   "The Hoodie. Hoodie in sweatshirt fabric made from a cotton blend."
 ]
-item_brands = ["H&M", "Zara", "Bershka", "Nike", "Gucci", "	Levi’s"]
+item_brands = ["H&M", "Zara", "Bershka", "Nike", "Gucci", "Levi’s"]
 item_sizes = ["XS", "S", "M", "L", "XL", "XXL"]
 item_colors = ["brown", "light grey", "mint blue", "yellow", "blue", "pink"]
 

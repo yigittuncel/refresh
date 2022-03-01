@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :outfits
-  has_many :items
-  has_many :orders
+  has_many :outfits, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :orders, dependent: :destroy
 
   # items a user wants
   has_many :desired_items, through: :orders
