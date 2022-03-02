@@ -26,9 +26,13 @@
                 <%= link_to "Create your first outfit", new_outfit_path, class: "btn btn-outline-info pill" %>
               </div>
           <% else %>
+          <div class="row">
             <% @outfits.each do |outfit| %>
-            <%= cl_image_tag(outfit.photo.key)  %>
+              <div class="col-4">
+                <div style="height:200px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover"></div>
+              </div>
             <% end %>
+          </div>
           <% end %>
           </div>
         </div>
