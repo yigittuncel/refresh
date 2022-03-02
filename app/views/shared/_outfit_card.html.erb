@@ -22,7 +22,7 @@
     <div class="card-text">
 
       <p class="py-4 text-break m-0"><%= outfit.description %></p>
-      <p class="text-muted m-0">Posted <%= outfit.created_at %> days/hours/minutes ago</p>
+      <p class="text-muted m-0">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
 
     </div>
 

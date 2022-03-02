@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :items, only: %i[new create show]
   resources :outfits, only: %i[new create]
   get "/dashboard", to: "pages#dashboard"
+
 end
