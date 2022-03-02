@@ -1,0 +1,8 @@
+<h1>Create Outfit</h1>
+
+<%= simple_form_for @outfit do |f| %>
+  <%= f.input :description %>
+  <%= f.input :photo, as: :file %>
+  <%= f.input :items, collection: @items %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
