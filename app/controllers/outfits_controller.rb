@@ -15,7 +15,7 @@ class OutfitsController < ApplicationController
     @outfit.user = current_user
     if @outfit.save
       items_array = params[:outfit][:items]
-      items_array.each { |id| ItemOutfit.create(outfit: @outfit, item: Item.find(id)) }
+      items_array.each { |id| ItemOutfit.create(outfit: @outfit, item: Item.find(id)) } if items_array.present?
       redirect_to :root
     else
       render :new
