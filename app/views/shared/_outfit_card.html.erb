@@ -6,7 +6,8 @@
   </div>
 
   <div class="card-outfit-img"
-       style="background-image:url(<%= cl_image_path outfit.photo.key %>)">
+       style="background-image:url(<%= cl_image_path outfit.photo.key %>)"
+       data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal">
   </div>
 
   <div class="card-body">
