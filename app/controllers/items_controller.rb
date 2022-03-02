@@ -3,6 +3,8 @@ class ItemsController < ApplicationController
   before_action :set_items, only: [:show]
 
   def show
+    @order = Order.new
+    @my_items = current_user.items
   end
 
   def new
