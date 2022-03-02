@@ -20,14 +20,6 @@ class OutfitsController < ApplicationController
     else
       render :new
     end
-
-    # @item_outfit = ItemOutfit.new(params_item_outfit)
-    # @item_outfit.outfit = @outfit
-    # if @item_outfit.save
-    #   redirect_to :root
-    # else
-    #   render :new
-    # end
   end
 
   private
@@ -36,13 +28,3 @@ class OutfitsController < ApplicationController
     params.require(:outfit).permit(:description, :photo)
   end
 end
-
-
-# ItemOutfit.create(
-#   outfit: @outfit,
-#   item: Item.find(params[:outfit][:items][1])
-# )
-# ItemOutfit.create(
-#   outfit: @outfit,
-#   item: Item.find(params[:outfit][:items][2])
-# )
