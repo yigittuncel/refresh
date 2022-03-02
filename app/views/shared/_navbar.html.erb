@@ -1,29 +1,55 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar py-0 navbar-expand-sm navbar-light navbar-lewagon fixed-top d-flex justify-content-center flex-column bg-transparent">
+  <div class="container py-2 bg-white">
 
-    <%= link_to root_path, class: "navbar-brand d-flex align-items-center justify-content-start" do %>
-      <h2 class="m-0">Refresh</h2>
-    <% end %>
-
-
-      <% if user_signed_in? %>
-
-        <div class="nav-item d-flex align-items-center justify-content-center">
-          <%= link_to "+", "#", class: "btn btn-success" %>
-        </div>
-
-        <div class="nav-item d-flex align-items-center justify-content-end">
-          <%= link_to "nickname", "#" , class: "pe-2"%>
-          <% if current_user.photo.key.nil? %>
-            <%= cl_image_tag "v1646064199/non_existing_id.png", class: "avatar" %>
-          <% else %>
-            <%= cl_image_tag current_user.photo.key , class: "avatar" %>
-          <% end %>
-        </div>
-      <% else %>
-        <div class="nav-item d-flex align-items-center justify-content-center">
-          <%= link_to "Login", new_user_session_path, class: "btn btn-success" %>
-        </div>
-
+      <%= link_to root_path, class: "navbar-brand d-flex align-items-center justify-content-start g-col-4" do %>
+        <h2 class="m-0">Refresh</h2>
       <% end %>
+
+
+        <% if user_signed_in? %>
+
+          <div class="g-col-4 nav-item d-flex align-items-center justify-content-center position-absolute start-50 translate-middle-x">
+            <%# link_to "+", "#", class: "btn btn-success rounded-circle btn-lg" %>
+            <div class="btn btn-success rounded-circle btn-lg"
+               data-bs-toggle="collapse" data-bs-target="#chooseSubmit"
+               aria-expanded="false" aria-controls="chooseSubmit">
+               +
+            </div>
+          </div>
+
+
+
+          <div class="g-col-4 nav-item d-flex align-items-center justify-content-end">
+            <%# link_to "nickname", "#" , class: "pe-2"%>
+            <% if current_user.photo.key.nil? %>
+              <%= link_to "#" do %>
+                <%= cl_image_tag "v1646064199/non_existing_id.png", class: "avatar" %>
+              <% end %>
+            <% else %>
+              <%= link_to "#" do %>
+                <%= cl_image_tag current_user.photo.key , class: "avatar" %>
+              <% end %>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="g-col-8 nav-item d-flex align-items-center justify-content-center">
+            <%= link_to "Login", new_user_session_path, class: "btn btn-success" %>
+          </div>
+
+        <% end %>
+  </div>
+
+  <div class="collapse" id="chooseSubmit">
+
+    <div class="row p-3">
+      <div class="col-6 d-flex align-items-center justify-content-center">
+          <%= link_to "Item", "#", class: "btn btn-success" %>
+      </div>
+      <div class="col-6 d-flex align-items-center justify-content-center">
+          <%= link_to "Outfit", "#", class: "btn btn-success" %>
+      </div>
+    </div>
+
+  </div>
 
 </div>
