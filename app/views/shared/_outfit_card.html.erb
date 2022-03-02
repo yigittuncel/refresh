@@ -22,7 +22,9 @@
     <div class="card-text">
 
       <p class="py-4 text-break m-0"><%= outfit.description %></p>
-      <p class="text-muted m-0">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
+      <%= link_to outfit_path(outfit) do %>
+        <p class="text-muted m-0">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
+      <% end %>
 
     </div>
 
