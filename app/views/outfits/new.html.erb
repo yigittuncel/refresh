@@ -3,6 +3,6 @@
 <%= simple_form_for @outfit do |f| %>
   <%= f.input :description %>
   <%= f.input :photo, as: :file %>
-  <%= f.input :items, collection: @items %>
+  <%= f.input :items, collection: @items, as: :check_boxes, include_hidden: false, input_html: { multiple: true } %>
   <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

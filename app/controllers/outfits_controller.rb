@@ -9,12 +9,14 @@ class OutfitsController < ApplicationController
     @user = current_user
     @outfit.user = @user
     if @outfit.save
-      ItemOutfit.create(
-        outfit: @outfit,
-        item: Item.find(params[:outfit][:items])
-      )
+      items_array = params[:outfit][:items]
+      items_array.each do |id|
+        ItemOutfit.create(
+          outfit: @outfit,
+          item: Item.find(id)
+        )
+      end
       redirect_to :root
-
     else
       render :new
     end
@@ -34,3 +36,13 @@ class OutfitsController < ApplicationController
     params.require(:outfit).permit(:description, :photo)
   end
 end
+
+
+# ItemOutfit.create(
+#   outfit: @outfit,
+#   item: Item.find(params[:outfit][:items][1])
+# )
+# ItemOutfit.create(
+#   outfit: @outfit,
+#   item: Item.find(params[:outfit][:items][2])
+# )
