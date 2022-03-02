@@ -22,11 +22,11 @@
           <div class="g-col-4 nav-item d-flex align-items-center justify-content-end">
             <%# link_to "nickname", "#" , class: "pe-2"%>
             <% if current_user.photo.key.nil? %>
-              <%= link_to "#" do %>
+              <%= link_to dashboard_path do %>
                 <%= cl_image_tag "v1646064199/non_existing_id.png", class: "avatar" %>
               <% end %>
             <% else %>
-              <%= link_to "#" do %>
+              <%= link_to dashboard_path do %>
                 <%= cl_image_tag current_user.photo.key , class: "avatar" %>
               <% end %>
             <% end %>
