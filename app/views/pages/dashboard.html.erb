@@ -48,10 +48,17 @@
             <% else %>
               <div class="row">
                 <% @items.each do |item| %>
-                  <div class="col-4">
-                    <div style="height:200px; background-image:url(<%= cl_image_path item.photo.key %>); background-size: cover"></div>
-              </div>
-              <% end %>
+
+                    <div class="col-4">
+                      <%= link_to item_path(item) do %>
+                      <div style="height:200px; background-image:url(<%= cl_image_path item.photo.key %>); background-size: cover">
+                      </div>
+                      <p><%= item.name %>
+                      </p>
+                      <% end %>
+                    </div>
+
+                <% end %>
             <% end %>
           </div>
         </div>
