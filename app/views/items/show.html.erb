@@ -38,7 +38,8 @@
         <% if user_signed_in? %>
 
           <%= simple_form_for [@item, @order] do |f| %>
-            <%= f.input :offered_item, collection: current_user.items, as: :radio_buttons, include_hidden: false, input_html: { multiple: true } %>
+            <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
+            <%= f.input :offered_item, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true } %>
             <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
 
