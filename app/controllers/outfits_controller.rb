@@ -7,7 +7,6 @@ class OutfitsController < ApplicationController
 
   def new
     @outfit = Outfit.new
-    @items = current_user.items
   end
 
   def create
