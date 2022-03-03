@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_03_111408) do
+ActiveRecord::Schema.define(version: 2022_03_03_122426) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,12 +68,14 @@ ActiveRecord::Schema.define(version: 2022_03_03_111408) do
     t.integer "offered_item_id", null: false
     t.integer "desired_item_id", null: false
     t.integer "status", default: 0
-    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "buyer_id", null: false
+    t.integer "seller_id", null: false
+    t.index ["buyer_id"], name: "index_orders_on_buyer_id"
     t.index ["desired_item_id"], name: "index_orders_on_desired_item_id"
     t.index ["offered_item_id"], name: "index_orders_on_offered_item_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    t.index ["seller_id"], name: "index_orders_on_seller_id"
   end
 
   create_table "outfits", force: :cascade do |t|
@@ -102,6 +104,5 @@ ActiveRecord::Schema.define(version: 2022_03_03_111408) do
   add_foreign_key "item_outfits", "items"
   add_foreign_key "item_outfits", "outfits"
   add_foreign_key "items", "users"
-  add_foreign_key "orders", "users"
   add_foreign_key "outfits", "users"
 end
