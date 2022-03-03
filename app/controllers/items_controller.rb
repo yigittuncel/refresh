@@ -4,7 +4,6 @@ class ItemsController < ApplicationController
 
   def show
     @order = Order.new
-    @my_items = current_user.items
   end
 
   def new
