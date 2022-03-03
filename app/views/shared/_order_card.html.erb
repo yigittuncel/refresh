@@ -13,7 +13,8 @@
         <div class="img-item-card" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
         </div>
         <%= order.desired_item.name %>
-        <%= order.desired_item.user.nickname %>
+        <%= cl_image_tag order.seller.photo.key, class: "avatar" %>
+        <%= order.seller.nickname %>
 
       </div>
 
@@ -21,12 +22,13 @@
 
     <div class="col-6">
 
-    <div class="item-card card">
+      <div class="item-card card">
 
-        <div class="img-item-card" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
-        </div>
-        <%= order.offered_item.name %>
-        <%= order.offered_item.user.nickname %>
+          <div class="img-item-card" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
+          </div>
+          <%= order.offered_item.name %>
+          <%= cl_image_tag order.buyer.photo.key, class: "avatar" %>
+          <%= order.buyer.nickname %>
 
       </div>
 
