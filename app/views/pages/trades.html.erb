@@ -2,6 +2,7 @@
 
   <div>
     <h3 class="dashboard-title mt-4"><i class="fas fa-exchange-alt"></i> My trades</h3>
+
     <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
 
       <li class="nav-item" role="presentation">
@@ -24,7 +25,8 @@
 
       <div class="tab-pane fade show active my-4" id="sentOrders" role="tabpanel" aria-labelledby="sentOrders-tab">
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
+
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
           <% if @sent_orders.empty? %>
               <div class="m-3" style="height: 75vh">
@@ -32,7 +34,7 @@
                 <%= link_to "Explore cool outfits", new_outfit_path, class: "btn btn-outline-info pill" %>
               </div>
           <% else %>
-            <div class="row">
+            <div class="row ">
               <% @sent_orders.each do |order| %>
 
                 <%= render "shared/order_card", order: order %>
@@ -47,7 +49,8 @@
 
       <div class="tab-pane fade show my-4" id="receivedOrders" role="tabpanel" aria-labelledby="receivedOrders-tab">
 
-        <div class="row">
+        <div class="row d-flex justify-content-center">
+
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
           <% if @received_orders.empty? %>
               <div class="m-3" style="height: 75vh">
