@@ -34,11 +34,9 @@
           <% else %>
             <div class="row">
               <% @sent_orders.each do |order| %>
-                <div class="col-4">
-                  <div class="order-card">
-                    <%= order %>
-                  </div>
-                </div>
+
+                <%= render "shared/order_card", order: order %>
+
               <% end %>
             </div>
           <% end %>
@@ -59,9 +57,9 @@
           <% else %>
             <div class="row">
               <% @received_orders.each do |order| %>
-                <div class="col-4">
-                  <%= order %>
-                </div>
+
+                <%= render "shared/order_card", order: order %>
+
               <% end %>
             </div>
           <% end %>
