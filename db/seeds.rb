@@ -12,135 +12,172 @@ puts "Previous outfits deleted..."
 User.destroy_all
 puts "Previous users deleted..."
 
-users = Array.new(3)
+# Here starts the first user
 
-user_photos = [
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643622347/ekjbgb0bi3ac6zg3nn1t.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641491612/phy5oue4p0ftrjl3nnu7.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641496329/rksezyk6ndmyjuh3jp8b.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641197640/tltl66uk36iuhxjmt4wr.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641741818/rqxqd6d7kvehd8gfzj4z.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641194769/es5y4oty1ej25pmbckq6.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641489025/v0cccoyg5qgwifydqhlp.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643376514/nfaf0gwsk3zgcnaodrtk.jpg",
-  "https://avatars.githubusercontent.com/u/28245098?v=4",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641514195/rqald3eqzzvkqqycd21r.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641735078/pyafw4bavxfeqmb0vj7c.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641554758/itw2hdjxge7nonvpoqae.jpg",
-  "https://avatars.githubusercontent.com/u/97020679?v=4"
+christina_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg")
+
+christina = User.new(
+  email: "christina@christina.com",
+  password: "christina@christina.com",
+  nickname: "christina"
+)
+
+christina.photo.attach(io: christina_photo, filename: christina.email, content_type: 'image/png')
+christina.save!
+puts "User christina has been created"
+
+christina_items = Array.new(2)
+christina_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
 ]
-nicknames = ["Christina", "Mario", "Yigit", "Anna", "Romain", "Melissa", "Sophie", "Michelle", "Fotios", "Nicola", "Michael", "Maximilian", "Hasib", "Sankar"]
-user_email = ["christina@borensky.com", "mario@rodriguez-gonzalez.com", "yigit@tuncel.com, "anna@eiden.com", "romain@gille.com", "melissa@hauck.com", "sophie@hadeln.com", "michelle@knolly.com", "fotios@kolytoumpas.com", "nicola@pilcher.com", "michael@pitopoulakis.com", "maximilian@scheider.com", "hasib@Selimovic.com", "sankar@ganesh-subramanian.com"]
-user_password = ["secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret"]
-
-users.each_with_index do |u, index|
-  user = User.new(
-    nickname: nicknames[index],
-    email: user_email[index],
-    password: user_password[index]
-  )
-
-  user_photo = URI.open(user_photos[index])
-  user.photo.attach(io: user_photo, filename: user.email, content_type: 'image/png')
-  user.save!
-  puts "User #{user.nickname} created!"
-end
-
-item_photos = [
-  "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80",
-  "https://images.unsplash.com/photo-1591195853828-11db59a44f6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80",
-  "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=997&q=80",
-  "https://images.unsplash.com/photo-1582966772680-860e372bb558?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=654&q=80",
-  "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
-]
-
-item_names = ["T-shirt", "Shorts", "Shoes", "Trousers", "Socks", "Hoodie"]
-item_descriptions = [
+christina_item_names = ["T-shirt", "Shorts"]
+christina_item_descriptions = [
   "H&M Essentials. No. 7: The T-shirt. Regular-fit T-shirts in soft cotton jersey with a round, rib-trimmed neckline and a straight hem",
-  "Shorts in a cotton weave with covered elastication and a drawstring at the waist, a fake fly, diagonal side pockets and an open back pocket.",
-  "Derby shoes with open lacing at the front. Canvas linings and insoles. Heel 2.5 cm.",
-  "Crease-leg trousers in woven fabric with a concealed hook-and-eye fastening and button on the waistband and a zip fly.",
-  "Socks in a soft, fine-knit cotton blend with elasticated tops.",
-  "The Hoodie. Hoodie in sweatshirt fabric made from a cotton blend."
+  "Shorts in a cotton weave with covered elastication and a drawstring at the waist, a fake fly, diagonal side pockets and an open back pocket."
 ]
-item_brands = ["H&M", "Zara", "Bershka", "Nike", "Gucci", "Levi’s"]
-item_sizes = ["XS", "S", "M", "L", "XL", "XXL"]
-item_colors = ["brown", "light grey", "mint blue", "yellow", "blue", "pink"]
 
-items = Array.new(6)
+christina_item_brands = ["H&M", "Zara"]
+christina_item_sizes = ["XS", "S"]
+christina_item_colors = ["brown", "light grey"]
 
-items.each_with_index do |i, index|
+christina_items.each_with_index do |i, index|
   item = Item.new(
-    name: item_names[index],
-    description: item_descriptions[index],
-    brand: item_brands[index],
-    size: item_sizes[index],
-    color: item_colors[index],
+    name: christina_item_names[index],
+    description: christina_item_descriptions[index],
+    brand: christina_item_brands[index],
+    size: christina_item_sizes[index],
+    color: christina_item_colors[index],
   )
 
-  item_photo = URI.open(item_photos[index])
-  item.photo.attach(io: item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.first
+  christina_item_photo = URI.open(christina_item_photos[index])
+  item.photo.attach(io: christina_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "christina"
   item.save!
   puts "Item #{item.name} created!"
 end
 
-
-outfit_photos = [
-  "https://images.unsplash.com/photo-1617019114583-affb34d1b3cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
-  "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3087&q=80"
+christina_outfits = Array.new(2)
+christina_outfit_descriptions = [
+  "Here I am wearing my favourite T-Shirt.",
+  "This is a very nice hat, which I bought in Barcelona."
+]
+christina_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600"
 ]
 
-outfit_descriptions = [
-  "nice outfit",
-  "do you like my outfit?"
-]
-
-outfits = Array.new(2)
-
-outfits.each_with_index do |o, index|
+christina_outfits.each_with_index do |o, index|
   outfit = Outfit.new(
-    description: outfit_descriptions[index]
+    description: christina_outfit_descriptions[index]
   )
-
-  outfit_photo = URI.open(outfit_photos[index])
+  outfit_photo = URI.open(christina_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.first
+  outfit.user = User.find_by nickname: "christina"
   outfit.save!
-  puts "Outfit #{outfit.description} created!"
+  puts "Outfit created"
 end
 
-outfit1 = Outfit.all[0]
-outfit2 = Outfit.all[1]
+christina_outfits = Outfit.where("user_id = ?", User.last.id)
+christina_items = Item.where("user_id = ?", User.last.id)
 
 ItemOutfit.create!(
-  outfit: outfit1,
-  item: Item.all[0]
+  outfit: christina_outfits.first,
+  item: christina_items.first
 )
 
 ItemOutfit.create!(
-  outfit: outfit1,
-  item: Item.all[1]
+  outfit: christina_outfits.first,
+  item: christina_items.second
 )
 
 ItemOutfit.create!(
-  outfit: outfit1,
-  item: Item.all[2]
+  outfit: christina_outfits.second,
+  item: christina_items.first
+)
+puts "Outfit with tagged items created"
+
+# Here starts the second user
+
+christina_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg")
+
+christina = User.new(
+  email: "christina@christina.com",
+  password: "christina@christina.com",
+  nickname: "christina"
+)
+
+christina.photo.attach(io: christina_photo, filename: christina.email, content_type: 'image/png')
+christina.save!
+puts "User christina has been created"
+
+christina_items = Array.new(2)
+christina_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
+]
+christina_item_names = ["T-shirt", "Shorts"]
+christina_item_descriptions = [
+  "H&M Essentials. No. 7: The T-shirt. Regular-fit T-shirts in soft cotton jersey with a round, rib-trimmed neckline and a straight hem",
+  "Shorts in a cotton weave with covered elastication and a drawstring at the waist, a fake fly, diagonal side pockets and an open back pocket."
+]
+
+christina_item_brands = ["H&M", "Zara"]
+christina_item_sizes = ["XS", "S"]
+christina_item_colors = ["brown", "light grey"]
+
+christina_items.each_with_index do |i, index|
+  item = Item.new(
+    name: christina_item_names[index],
+    description: christina_item_descriptions[index],
+    brand: christina_item_brands[index],
+    size: christina_item_sizes[index],
+    color: christina_item_colors[index],
+  )
+
+  christina_item_photo = URI.open(christina_item_photos[index])
+  item.photo.attach(io: christina_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "christina"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+christina_outfits = Array.new(2)
+christina_outfit_descriptions = [
+  "Here I am wearing my favourite T-Shirt.",
+  "This is a very nice hat, which I bought in Barcelona."
+]
+christina_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600"
+]
+
+christina_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: christina_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(christina_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "christina"
+  outfit.save!
+  puts "Outfit created"
+end
+
+christina_outfits = Outfit.where("user_id = ?", User.last.id)
+christina_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: christina_outfits.first,
+  item: christina_items.first
 )
 
 ItemOutfit.create!(
-  outfit: outfit2,
-  item: Item.all[3]
+  outfit: christina_outfits.first,
+  item: christina_items.second
 )
 
 ItemOutfit.create!(
-  outfit: outfit2,
-  item: Item.all[4]
+  outfit: christina_outfits.second,
+  item: christina_items.first
 )
-
-ItemOutfit.create!(
-  outfit: outfit2,
-  item: Item.all[5]
-)
+puts "Outfit with tagged items created"
