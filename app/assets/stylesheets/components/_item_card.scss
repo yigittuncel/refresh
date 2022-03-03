@@ -1,9 +1,12 @@
 input[type="radio"] {
   display: none;
 }
+input[type="checkbox"] {
+  display: none;
+}
 
 label {
-  border: 1px solid #fff;
+  // border: 1px solid #fff;
   padding: 10px;
   display: block;
   position: relative;
@@ -38,18 +41,19 @@ label img {
   transform-origin: 50% 50%;
 }
 
-:checked + label {
-  border-color: #ddd;
-}
+// :checked + label {
+//   border-color: #ddd;
+// }
 
 :checked + label:before {
   content: "✓";
-  background-color: grey;
+  background-color: #FFCB1F;
   transform: scale(1);
 }
 
 :checked + label img {
   transform: scale(0.9);
-  /* box-shadow: 0 0 5px #333; */
+  // box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  border: 5px solid #FFCB1F;
   z-index: -1;
 }
