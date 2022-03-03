@@ -6,12 +6,15 @@ class User < ApplicationRecord
 
   has_many :outfits, dependent: :destroy
   has_many :items, dependent: :destroy
-  has_many :orders, dependent: :destroy
+  # has_many :orders, dependent: :destroy
 
   # items a user wants
-  has_many :desired_items, through: :orders
+  has_many :desired_items, through: :offering_orders
   # items a user has offered
-  has_many :offered_items, through: :orders
+  has_many :offered_items, through: :receiving_orders
 
   has_one_attached :photo
+
+  has_many :receiving_orders, foreign_key: "seller_id", class_name: 'Orders'
+  has_many :offering_orders, foreign_key: "buyer_id", class_name: 'Orders'
 end

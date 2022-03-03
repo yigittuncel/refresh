@@ -1,0 +1,83 @@
+<div class="card" data-controller="order-card">
+
+  <div class="card-header d-flex justify-content-center">
+    <h5>
+      <%= order.status.capitalize %>
+    </h5>
+  </div>
+
+  <div class="row d-flex align-items-stretch">
+
+    <div class="col-6">
+
+      <div class="item-card card">
+
+        <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
+        </div>
+
+        <div class="card-header d-flex flex-column justify-content-center">
+
+          <h4>
+            <%= order.desired_item.name %>
+          </h4>
+
+          <div class="user-info">
+            <%= cl_image_tag order.seller.photo.key, class: "avatar" %>
+            <%= order.seller.nickname %>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="col-6">
+
+      <div class="item-card card">
+
+          <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
+          </div>
+
+          <div class="card-header d-flex flex-column justify-content-center">
+
+            <h4>
+              <%= order.offered_item.name %>
+            </h4>
+
+            <div class="user-info">
+              <%= cl_image_tag order.buyer.photo.key, class: "avatar" %>
+              <%= order.buyer.nickname %>
+            </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <% if current_user == order.seller %>
+
+    <div class="row" data-order-card-target="content">
+
+      <div class="col-6">
+        <p data-order-card-target="confirm"
+           data-action= 'click->order-card#confirm'>
+           Confirm
+        </p>
+      </div>
+
+      <div class="col-6">
+        <p data-order-card-target="reject"
+           data-action= 'click->order-card#reject'>
+           Reject
+        </p>
+      </div>
+
+    </div>
+
+  <% end %>
+
+</div>

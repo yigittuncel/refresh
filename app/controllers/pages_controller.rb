@@ -11,4 +11,9 @@ class PagesController < ApplicationController
     @outfits = current_user.outfits
     @items = current_user.items
   end
+
+  def trades
+    @sent_orders = Order.where("buyer_id = ?", current_user)
+    @received_orders = Order.where("seller_id = ?", current_user)
+  end
 end

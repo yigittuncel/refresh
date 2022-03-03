@@ -1,0 +1,76 @@
+<div class="container">
+
+  <div>
+    <h3 class="dashboard-title mt-4"><i class="fas fa-exchange-alt"></i> My trades</h3>
+
+    <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="sentOrders-tab" data-bs-toggle="tab"
+                data-bs-target="#sentOrders" type="button" role="tab" aria-controls="sentOrders" aria-selected="true">
+        Sent
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="receivedOrders-tab" data-bs-toggle="tab"
+                data-bs-target="#receivedOrders" type="button" role="tab" aria-controls="receivedOrders" aria-selected="true">
+        Received
+        </button>
+      </li>
+
+    </ul>
+
+    <div class="tab-content" id="myTabContent">
+
+      <div class="tab-pane fade show active my-4" id="sentOrders" role="tabpanel" aria-labelledby="sentOrders-tab">
+
+        <div class="row d-flex justify-content-center">
+
+          <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
+          <% if @sent_orders.empty? %>
+              <div class="m-3" style="height: 75vh">
+                <p>You haven't sent any trade offers yet. Why don't you try exploring your feed?</p>
+                <%= link_to "Explore cool outfits", new_outfit_path, class: "btn btn-outline-info pill" %>
+              </div>
+          <% else %>
+            <div class="row ">
+              <% @sent_orders.each do |order| %>
+
+                <%= render "shared/order_card", order: order %>
+
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="tab-pane fade show my-4" id="receivedOrders" role="tabpanel" aria-labelledby="receivedOrders-tab">
+
+        <div class="row d-flex justify-content-center">
+
+          <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
+          <% if @received_orders.empty? %>
+              <div class="m-3" style="height: 75vh">
+                <p>You haven't received any trade offers yet. Why don't you try uploading a new outfit?</p>
+                <%= link_to "Post an outfit", new_outfit_path, class: "btn btn-outline-info pill" %>
+              </div>
+          <% else %>
+            <div class="row">
+              <% @received_orders.each do |order| %>
+
+                <%= render "shared/order_card", order: order %>
+
+              <% end %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
