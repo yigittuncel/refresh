@@ -13,6 +13,7 @@
         <div class="img-item-card" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
         </div>
         <%= order.desired_item.name %>
+        <%= order.desired_item.user.nickname %>
 
       </div>
 
@@ -25,6 +26,7 @@
         <div class="img-item-card" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
         </div>
         <%= order.offered_item.name %>
+        <%= order.offered_item.user.nickname %>
 
       </div>
 
