@@ -7,17 +7,21 @@
     <h3 class="dashboard-title mt-4">Your dashboard</h3>
     <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Outfits</button>
+        <button class="nav-link active" id="outfits-tab" data-bs-toggle="tab" data-bs-target="#outfits" type="button" role="tab" aria-controls="outfits" aria-selected="true">
+        Outfits
+        </button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Items</button>
+        <button class="nav-link" id="items-tab" data-bs-toggle="tab" data-bs-target="#items" type="button" role="tab" aria-controls="items" aria-selected="false">
+        Items
+        </button>
       </li>
-      <li class="nav-item" role="presentation">
-        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Trades</button>
-      </li>
+
     </ul>
+
+
     <div class="tab-content" id="myTabContent">
-      <div class="tab-pane fade show active my-4" id="home" role="tabpanel" aria-labelledby="home-tab">
+      <div class="tab-pane fade show active my-4" id="outfits" role="tabpanel" aria-labelledby="outfits-tab">
         <div class="row">
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
           <% if @outfits.empty? %>
@@ -40,7 +44,8 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade my-4" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+      <div class="tab-pane fade my-4" id="items" role="tabpanel" aria-labelledby="items-tab">
         <div class="row">
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
             <% if @items.empty? %>
@@ -65,17 +70,7 @@
           </div>
         </div>
       </div>
-      <div class="tab-pane fade my-4" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-        <% if @user.orders.empty? %>
-          <div class="m-3" style="height: 75vh">
-            <p >You don't have any tradings yet</p>
-            <%= link_to "Get inspiration", root_path, class: "btn btn-outline-info pill" %>
-          </div>
-        <% else %>
-          <div class="row">
-          </div>
-        <% end %>
-      </div>
+
     </div>
   </div>
 </div>
