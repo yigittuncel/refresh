@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
       user: current_user
     )
     if order.save
-      redirect_to :root
+      redirect_to :root, info: "You have have successfully made your offer"
     else
       render "items/show"
     end
