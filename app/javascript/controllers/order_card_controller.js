@@ -1,9 +1,15 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["content"]
+  static targets = ["confirm", "reject", "content"]
 
-  connect() {
-    console.log(this.contentTarget)
+  reject(){
+    console.log("Reject")
   }
+
+  confirm(){
+    console.log("Confirm")
+  }
+
+
 }
