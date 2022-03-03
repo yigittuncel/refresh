@@ -14,6 +14,18 @@ class OrdersController < ApplicationController
     end
   end
 
+  def update
+    @order = Order.find()
+  end
+
+  def confirm
+
+  end
+
+  def reject
+
+  end
+
   private
 
   def params_order

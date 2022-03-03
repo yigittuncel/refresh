@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" data-controller="order-card">
 
   <div class="card-header d-flex justify-content-center">
     <h5>
@@ -60,7 +60,7 @@
 
   <% if current_user == order.seller %>
 
-    <div class="row">
+    <div class="row" data-order-card-target="content">
 
       <div class="col-6">
         Confirm
