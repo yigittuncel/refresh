@@ -15,7 +15,9 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find()
+  end
+
+  def show
   end
 
   def confirm
