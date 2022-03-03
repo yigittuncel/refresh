@@ -17,11 +17,22 @@ users = Array.new(3)
 user_photos = [
   "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg",
   "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643622347/ekjbgb0bi3ac6zg3nn1t.jpg",
-  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641491612/phy5oue4p0ftrjl3nnu7.jpg"
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641491612/phy5oue4p0ftrjl3nnu7.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641496329/rksezyk6ndmyjuh3jp8b.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641197640/tltl66uk36iuhxjmt4wr.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641741818/rqxqd6d7kvehd8gfzj4z.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641194769/es5y4oty1ej25pmbckq6.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641489025/v0cccoyg5qgwifydqhlp.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643376514/nfaf0gwsk3zgcnaodrtk.jpg",
+  "https://avatars.githubusercontent.com/u/28245098?v=4",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641514195/rqald3eqzzvkqqycd21r.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641735078/pyafw4bavxfeqmb0vj7c.jpg",
+  "https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641554758/itw2hdjxge7nonvpoqae.jpg",
+  "https://avatars.githubusercontent.com/u/97020679?v=4"
 ]
-nicknames = ["Christina", "Mario", "Yigit"]
-user_email = ["christina@borensky.com", "mario@rodriguez-gonzalez.com", "yigit@tuncel.com"]
-user_password = ["secret", "secret", "secret"]
+nicknames = ["Christina", "Mario", "Yigit", "Anna", "Romain", "Melissa", "Sophie", "Michelle", "Fotios", "Nicola", "Michael", "Maximilian", "Hasib", "Sankar"]
+user_email = ["christina@borensky.com", "mario@rodriguez-gonzalez.com", "yigit@tuncel.com, "anna@eiden.com", "romain@gille.com", "melissa@hauck.com", "sophie@hadeln.com", "michelle@knolly.com", "fotios@kolytoumpas.com", "nicola@pilcher.com", "michael@pitopoulakis.com", "maximilian@scheider.com", "hasib@Selimovic.com", "sankar@ganesh-subramanian.com"]
+user_password = ["secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret", "secret"]
 
 users.each_with_index do |u, index|
   user = User.new(
@@ -45,7 +56,7 @@ item_photos = [
   "https://images.unsplash.com/photo-1556821840-3a63f95609a7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80"
 ]
 
-item_names = ["T-shirt", "Short", "Shoe", "Trouser", "Sock", "Hoodie"]
+item_names = ["T-shirt", "Shorts", "Shoes", "Trousers", "Socks", "Hoodie"]
 item_descriptions = [
   "H&M Essentials. No. 7: The T-shirt. Regular-fit T-shirts in soft cotton jersey with a round, rib-trimmed neckline and a straight hem",
   "Shorts in a cotton weave with covered elastication and a drawstring at the waist, a fake fly, diagonal side pockets and an open back pocket.",
