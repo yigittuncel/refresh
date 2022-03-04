@@ -76,7 +76,41 @@
               order_card_target: "confirm",
               action: "submit->order-card#confirm" } } do |f| %>
           <%= f.hidden_field :status, value: "confirmed" %>
-          <%= f.submit "Confirm", class: "btn btn-sm btn-primary btn-block mt-2" %>
+          <%= f.submit "Confirm", class: "btn btn-sm btn-success btn-block mt-2" %>
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <% if order.confirmed? %>
+
+    <div class="row d-flex justify-content-center" data-order-card-target="content">
+
+      <div class="col-6 d-flex justify-content-center">
+        <%= link_to "#" do %>
+          <div class="btn btn-success">
+          Send
+          <%= current_user == order.buyer ? order.seller.nickname : order.buyer.nickname %>
+          a message
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <% if order.rejected? %>
+
+    <div class="row d-flex justify-content-center" data-order-card-target="content">
+
+      <div class="col-6 d-flex justify-content-center">
+        <%= link_to "#" do %>
+          <div class="btn btn-danger">
+          Delete this trade offer
+          </div>
         <% end %>
       </div>
 
