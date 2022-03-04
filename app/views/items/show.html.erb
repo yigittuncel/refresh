@@ -1,33 +1,55 @@
+
 <div class="container">
+  <div class="row d-flex justify-content-center p-0 m-0">
 
+    <div class="col-lg-5 col-md-6 col-sm-12 p-0 border">
 
-  <div class="row justify-content-center">
+      <%= cl_image_tag @item.photo.key, height: 300 , width: 350, crop: :fill %>
 
-    <div class="col-12 col-lg-6 border showpage-image-container">
-      <%#= @item.photo %>
-      <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
+      <h1><%= @item.name %></h1>
+      <p>Description: <%= @item.description %>Description</p>
+      <p>Brand: <%= @item.brand %></p>
+      <p>Size: <%= @item.size %></p>
+      <p>Colour: <%= @item.color %></p>
+      <p>User: <%= @item.user.nickname %></p>
+
+      <!-- Button trigger modal -->
+      <div class="d-grid gap-2 col-6 my-4 mx-auto">
+        <button type="button" class="btn btn-primary text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Make an offer
+        </button>
+      </div>
+
     </div>
 
-  <div class="col-12 col-lg-4 border">
-    <h1><%= @item.name %></h1>
-    <p>Description: <%= @item.description %>Description</p>
-    <p>Brand: <%= @item.brand %></p>
-    <p>Size: <%= @item.size %></p>
-    <p>Colour: <%= @item.color %></p>
-    <p>User: <%= @item.user.nickname %></p>
-  </div>
+    <div class="col-lg-3 col-md-3 col d-none d-sm-block p-0">
+     <div class="sidebar container sticky-top">
+
+        <h5>Outfits this item appears</h5>
+        <ul class="list-group pb-3">
+        <% @item.outfits.each do |outfit|  %>
+
+          <li class="list-group-item border-0">
+            <%= link_to outfit_path(outfit) do %>
+              <div style="height:300px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover">
+              </div>
+            <% end %>
+          </li>
+
+        <% end %>
+        </ul>
+      </div>
+    </div>
 
   </div>
 </div>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Make an offer
-</button>
+
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
@@ -39,8 +61,8 @@
 
           <%= simple_form_for [@item, @order] do |f| %>
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
-            <%= f.input :offered_item, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
-            <%= f.button :submit, class: "btn btn-primary" %>
+            <%= f.input :offered_item, label: false, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
+            <%= f.button :submit, class: "btn btn-primary fixed-bottom m-1" %>
           <% end %>
 
         <% else %>
