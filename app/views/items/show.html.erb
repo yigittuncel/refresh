@@ -39,7 +39,7 @@
 
           <%= simple_form_for [@item, @order] do |f| %>
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
-            <%= f.input :offered_item, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, class: "hello" } %>
+            <%= f.input :offered_item, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
             <%= f.button :submit, class: "btn btn-primary" %>
           <% end %>
 
