@@ -15,20 +15,21 @@ class OrdersController < ApplicationController
   end
 
   def update
-    @order = Order.find()
+    @order = Order.find(params[:id])
+    @order.update(params_order)
+
+    respond_to do |format|
+      format.html { redirect_to trades_path }
+      format.text { render partial: "shared/order_card", locals: { order: @order }, formats: [:html] }
+    end
   end
 
-  def confirm
-
-  end
-
-  def reject
-
+  def show
   end
 
   private
 
   def params_order
-    params.require(:order).permit(:name, :description, :brand, :size, :color, :photo, :order)
+    params.require(:order).permit(:name, :description, :brand, :size, :color, :photo, :order, :status)
   end
 end
