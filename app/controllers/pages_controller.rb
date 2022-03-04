@@ -13,7 +13,7 @@ class PagesController < ApplicationController
   end
 
   def trades
-    @sent_orders = Order.where("buyer_id = ?", current_user)
-    @received_orders = Order.where("seller_id = ?", current_user)
+    @sent_orders = Order.where("buyer_id = ?", current_user).order('updated_at DESC')
+    @received_orders = Order.where("seller_id = ?", current_user).order('updated_at DESC')
   end
 end

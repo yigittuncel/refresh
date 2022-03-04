@@ -1,4 +1,4 @@
-<div class="card" data-controller="order-card" data-order-card-target="card">
+<div class="card order-status-<%= order.status %>" data-controller="order-card" data-order-card-target="card">
 
   <div class="card-header d-flex justify-content-center">
     <h5>
@@ -58,7 +58,7 @@
 
   </div>
 
-  <% if current_user == order.seller %>
+  <% if current_user == order.seller && order.pending? %>
 
     <div class="row" data-order-card-target="content">
 
