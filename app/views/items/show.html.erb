@@ -1,22 +1,15 @@
 <div class="container">
 
 
-  <div class="row justify-content-center">
+  <div class="row d-flex justify-content-center p-0 m-0">
 
-    <div class="col-12 col-lg-6 border showpage-image-container">
+    <!--<div class="col-12 col-lg-6 border showpage-image-container">
       <%#= @item.photo %>
       <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
+    </div>-->
+    <div class="col-lg-5 col-md-6 col-sm-12 p-0">
+      <%= render "shared/full_item_card", item: @item %>
     </div>
-
-  <div class="col-12 col-lg-4 border">
-    <h1><%= @item.name %></h1>
-    <p><strong>Description: </strong><%= @item.description %></p>
-    <p><strong>Brand: </strong><%= @item.brand %></p>
-    <p><strong>Size: </strong><%= @item.size %></p>
-    <p><strong>Colour: </strong><%= @item.color %></p>
-    <p><strong>User: </strong><%= @item.user.nickname %></p>
-  </div>
-
   </div>
 </div>
 
