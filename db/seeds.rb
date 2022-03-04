@@ -14,17 +14,17 @@ puts "Previous users deleted..."
 
 # Here starts the first user
 
-jaqueline_photo = URI.open("https://cdn.aboutstatic.com/file/images/12841fdab2eb2be8b2ad890d4673d02d.jpg?quality=75&height=534&width=400")
+jaqueline_photo = URI.open("https://secure.gravatar.com/avatar/e1637014c2818e4cd87dc435fa3b0d41?s=500&d=mm&r=g")
 
 jaqueline = User.new(
   email: "jaqueline@jaqueline.com",
   password: "jaqueline@jaqueline.com",
-  nickname: "Jaqueline Vazzola"
+  nickname: "Jaqueline"
 )
 
 jaqueline.photo.attach(io: jaqueline_photo, filename: jaqueline.email, content_type: 'image/png')
 jaqueline.save!
-puts "User Jaqueline Vazzola has been created"
+puts "User Jaqueline has been created"
 
 jaqueline_items = Array.new(3)
 jaqueline_item_photos = [
@@ -54,7 +54,7 @@ jaqueline_items.each_with_index do |i, index|
 
   jaqueline_item_photo = URI.open(jaqueline_item_photos[index])
   item.photo.attach(io: jaqueline_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Jaqueline Vazzola"
+  item.user = User.find_by nickname: "Jaqueline"
   item.save!
   puts "Item #{item.name} created!"
 end
@@ -73,7 +73,7 @@ jaqueline_outfits.each_with_index do |o, index|
   )
   outfit_photo = URI.open(jaqueline_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Jaqueline Vazzola"
+  outfit.user = User.find_by nickname: "Jaqueline"
   outfit.save!
   puts "Outfit created"
 end
@@ -105,12 +105,12 @@ louis_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40
 louis = User.new(
   email: "louis@louis.com",
   password: "louis@louis.com",
-  nickname: "Louis Darcis"
+  nickname: "Louis"
 )
 
 louis.photo.attach(io: louis_photo, filename: louis.email, content_type: 'image/png')
 louis.save!
-puts "User Louis Darcis has been created"
+puts "User Louis has been created"
 
 louis_items = Array.new(2)
 louis_item_photos = [
@@ -138,7 +138,7 @@ louis_items.each_with_index do |i, index|
 
   louis_item_photo = URI.open(louis_item_photos[index])
   item.photo.attach(io: louis_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Louis Darcis"
+  item.user = User.find_by nickname: "Louis"
   item.save!
   puts "Item #{item.name} created!"
 end
@@ -157,7 +157,7 @@ louis_outfits.each_with_index do |o, index|
   )
   outfit_photo = URI.open(louis_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Louis Darcis"
+  outfit.user = User.find_by nickname: "Louis"
   outfit.save!
   puts "Outfit created"
 end
@@ -184,12 +184,12 @@ riccardo_photo = URI.open("https://www.wuv.de/var/wuv/storage/images/werben_verk
 riccardo = User.new(
   email: "riccardo@riccardo.com",
   password: "riccardo@riccardo.com",
-  nickname: "Riccardo Simonetti"
+  nickname: "Riccardo"
 )
 
 riccardo.photo.attach(io: riccardo_photo, filename: riccardo.email, content_type: 'image/png')
 riccardo.save!
-puts "User Riccardo Simonetti has been created"
+puts "User Riccardo has been created"
 
 riccardo_items = Array.new(1)
 riccardo_item_photos = [
@@ -215,7 +215,7 @@ riccardo_items.each_with_index do |i, index|
 
   riccardo_item_photo = URI.open(riccardo_item_photos[index])
   item.photo.attach(io: riccardo_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Riccardo Simonetti"
+  item.user = User.find_by nickname: "Riccardo"
   item.save!
   puts "Item #{item.name} created!"
 end
@@ -234,7 +234,7 @@ riccardo_outfits.each_with_index do |o, index|
   )
   outfit_photo = URI.open(riccardo_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Riccardo Simonetti"
+  outfit.user = User.find_by nickname: "Riccardo"
   outfit.save!
   puts "Outfit created"
 end
@@ -256,12 +256,12 @@ lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-ge
 lena = User.new(
   email: "lena@lena.com",
   password: "lena@lena.com",
-  nickname: "Lena Gercke"
+  nickname: "Lena"
 )
 
 lena.photo.attach(io: lena_photo, filename: lena.email, content_type: 'image/png')
 lena.save!
-puts "User Lena Gercke has been created"
+puts "User Lena has been created"
 
 lena_items = Array.new(5)
 lena_item_photos = [
@@ -296,7 +296,7 @@ lena_items.each_with_index do |i, index|
 
   lena_item_photo = URI.open(lena_item_photos[index])
   item.photo.attach(io: lena_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Lena Gercke"
+  item.user = User.find_by nickname: "Lena"
   item.save!
   puts "Item #{item.name} created!"
 end
@@ -317,7 +317,7 @@ lena_outfits.each_with_index do |o, index|
   )
   outfit_photo = URI.open(lena_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Lena Gercke"
+  outfit.user = User.find_by nickname: "Lena"
   outfit.save!
   puts "Outfit created"
 end
