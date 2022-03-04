@@ -100,88 +100,6 @@ puts "Outfit with tagged items created"
 
 # Here starts the second user
 
-lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-gercke.jpg")
-
-lena = User.new(
-  email: "lena@lena.com",
-  password: "lena@lena.com",
-  nickname: "Lena Gercke"
-)
-
-lena.photo.attach(io: lena_photo, filename: lena.email, content_type: 'image/png')
-lena.save!
-puts "User Lena Gercke has been created"
-
-lena_items = Array.new(3)
-lena_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/9b372fa94cffe3aafda0001103128a0b.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
-]
-lena_item_names = ["pullover", "pants 'Raven'", "ankle boots"]
-lena_item_descriptions = [
-  "A very stylish long-sleeved rib knit pullover. The colour looks really fresh and nice.",
-  "This stylish black trousers are plain coloured and made out of faux leather. They are bootcut and high waist.",
-  "These leather boots have platform heels and are in colour-blocking style with the colours black and white. The leather is very smooth and you have a side-zip. The heel is medium high, about 5 cm. "
-]
-
-lena_item_brands = ["LeGer", "LeGer", "LeGer"]
-lena_item_sizes = ["S", "S", "38"]
-lena_item_colors = ["pink", "black", "black and white"]
-
-lena_items.each_with_index do |i, index|
-  item = Item.new(
-    name: lena_item_names[index],
-    description: lena_item_descriptions[index],
-    brand: lena_item_brands[index],
-    size: lena_item_sizes[index],
-    color: lena_item_colors[index]
-  )
-
-  lena_item_photo = URI.open(lena_item_photos[index])
-  item.photo.attach(io: lena_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Lena Gercke"
-  item.save!
-  puts "Item #{item.name} created!"
-end
-
-lena_outfits = Array.new(1)
-lena_outfit_descriptions = [
-  "I love this outfit, because I think the combination of the fresh pink sweater with the dark leather trouser makes it look both elegant and easy-going."
-]
-lena_outfit_photos = [
-  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/32f7e4ac378cca2f2f87eebfe0fd101d.jpg?quality=75&height=1280&width=960"
-]
-
-lena_outfits.each_with_index do |o, index|
-  outfit = Outfit.new(
-    description: lena_outfit_descriptions[index]
-  )
-  outfit_photo = URI.open(lena_outfit_photos[index])
-  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Lena Gercke"
-  outfit.save!
-  puts "Outfit created"
-end
-
-lena_outfits = Outfit.where("user_id = ?", User.last.id)
-lena_items = Item.where("user_id = ?", User.last.id)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.first,
-  item: lena_items.first
-)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.first,
-  item: lena_items.second
-)
-
-puts "Outfit with tagged items created"
-
-# Here starts the third user
-
 louis_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40ed0bbb7626f89f7a.jpg")
 
 louis = User.new(
@@ -199,7 +117,7 @@ louis_item_photos = [
   "https://cdn.aboutstatic.com/file/images/61be01e5d77afffa4892cb1c8890a734.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
   "https://cdn.aboutstatic.com/file/images/72979f78b5ac87a69a3aa63d7fae372b.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400"
 ]
-louis_item_names = ["sweatshirt", "pants"]
+louis_item_names = ["Sweatshirt", "Pants"]
 louis_item_descriptions = [
   "Plain coloured hoodie, longsleeve and loose fit. Made out of cotton from organic farming. ",
   "This beige trousers are made out of cotton (from organic farming) and have a regular fit. You will look great in it.",
@@ -259,7 +177,7 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
-# Here starts the fourth user
+# Here starts the third user
 
 riccardo_photo = URI.open("https://www.wuv.de/var/wuv/storage/images/werben_verkaufen/marketing/ich_wollte_mich_nie_nur_auf_das_medium_blog_reduzieren_lassen/9623953-5-ger-DE/ich_wollte_mich_nie_nur_auf_das_medium_blog_reduzieren_lassen7_gross.jpg")
 
@@ -327,6 +245,109 @@ riccardo_items = Item.where("user_id = ?", User.last.id)
 ItemOutfit.create!(
   outfit: riccardo_outfits.first,
   item: riccardo_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here starts the fourth user
+
+lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-gercke.jpg")
+
+lena = User.new(
+  email: "lena@lena.com",
+  password: "lena@lena.com",
+  nickname: "Lena Gercke"
+)
+
+lena.photo.attach(io: lena_photo, filename: lena.email, content_type: 'image/png')
+lena.save!
+puts "User Lena Gercke has been created"
+
+lena_items = Array.new(5)
+lena_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/9b372fa94cffe3aafda0001103128a0b.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/540287c2e5f5ce8ddeac96148a490120.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400",
+  "https://cdn.aboutstatic.com/file/images/03c9e9d56ad31f1a72ad3db5f1cba822.jpg?quality=75&height=534&width=400"
+
+]
+lena_item_names = ["Pullover", "Pants 'Raven'", "Ankle boots", "Oversized sweater", "Pants 'Mia'"]
+lena_item_descriptions = [
+  "A very stylish long-sleeved rib knit pullover. The colour looks really fresh and nice.",
+  "This stylish black trousers are plain coloured and made out of faux leather. They are bootcut and high waist.",
+  "These leather boots have platform heels and are in colour-blocking style with the colours black and white. The leather is very smooth and you have a side-zip. The heel is medium high, about 5 cm.",
+  "Fine knit oversized sweater, made out of 52% Alpaca wool. The sweater has a long cut and a normal fit. One of the best things is the soft feel.",
+  "Plain coloured high waist trousers with wide leg. The trousers have side pockets and contrasts seams. 100% leather."
+]
+
+lena_item_brands = ["LeGer", "LeGer", "LeGer", "LeGer", "LeGer"]
+lena_item_sizes = ["S", "S", "38", "36", "36"]
+lena_item_colors = ["pink", "black", "black and white", "lilac", "black"]
+
+lena_items.each_with_index do |i, index|
+  item = Item.new(
+    name: lena_item_names[index],
+    description: lena_item_descriptions[index],
+    brand: lena_item_brands[index],
+    size: lena_item_sizes[index],
+    color: lena_item_colors[index]
+  )
+
+  lena_item_photo = URI.open(lena_item_photos[index])
+  item.photo.attach(io: lena_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Lena Gercke"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+lena_outfits = Array.new(2)
+lena_outfit_descriptions = [
+  "I love this outfit, because I think the combination of the fresh pink sweater with the dark leather trouser makes it look both elegant and easy-going.",
+  "Very cool look, that I love to wear on weekends for going out."
+]
+lena_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/a0177f681f7a181753008ee45d0d0f16.jpg?quality=75&height=534&width=400"
+]
+
+lena_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: lena_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(lena_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Lena Gercke"
+  outfit.save!
+  puts "Outfit created"
+end
+
+lena_outfits = Outfit.where("user_id = ?", User.last.id)
+lena_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.first
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.second
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.third
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.second,
+  item: lena_items.fourth
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.second,
+  item: lena_items.fifth
 )
 
 puts "Outfit with tagged items created"
