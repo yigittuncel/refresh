@@ -1,4 +1,4 @@
-<div class="card" data-controller="order-card">
+<div class="card order-status-<%= order.status %> mb-4" data-controller="order-card" data-order-card-target="card">
 
   <div class="card-header d-flex justify-content-center">
     <h5>
@@ -58,22 +58,60 @@
 
   </div>
 
-  <% if current_user == order.seller %>
+  <% if current_user == order.seller && order.pending? %>
 
     <div class="row" data-order-card-target="content">
 
       <div class="col-6">
-        <p data-order-card-target="confirm"
-           data-action= 'click->order-card#confirm'>
-           Confirm
-        </p>
+        <%= simple_form_for order, html: { data: {
+              order_card_target: "reject",
+              action: "submit->order-card#reject" } } do |f| %>
+          <%= f.hidden_field :status, value: "rejected" %>
+          <%= f.submit "Reject", class: "btn btn-sm btn-primary btn-block mt-2" %>
+        <% end %>
       </div>
 
       <div class="col-6">
-        <p data-order-card-target="reject"
-           data-action= 'click->order-card#reject'>
-           Reject
-        </p>
+        <%= simple_form_for order, html: { data: {
+              order_card_target: "confirm",
+              action: "submit->order-card#confirm" } } do |f| %>
+          <%= f.hidden_field :status, value: "confirmed" %>
+          <%= f.submit "Confirm", class: "btn btn-sm btn-success btn-block mt-2" %>
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <% if order.confirmed? %>
+
+    <div class="row d-flex justify-content-center" data-order-card-target="content">
+
+      <div class="col-6 d-flex justify-content-center">
+        <%= link_to "#" do %>
+          <div class="btn btn-success">
+          Send
+          <%= current_user == order.buyer ? order.seller.nickname : order.buyer.nickname %>
+          a message
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  <% end %>
+
+  <% if order.rejected? %>
+
+    <div class="row d-flex justify-content-center" data-order-card-target="content">
+
+      <div class="col-6 d-flex justify-content-center">
+        <%= link_to "#" do %>
+          <div class="btn btn-danger">
+          Delete this trade offer
+          </div>
+        <% end %>
       </div>
 
     </div>

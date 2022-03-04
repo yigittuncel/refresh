@@ -1,0 +1,29 @@
+<div class="card-item position-relative mb-4 p-0 border-0 flex">
+
+  <div class="card-outfit-img"
+       style="background-image:url(<%= cl_image_path item.photo.key %>)">
+  </div>
+
+  <div class="card-body">
+
+    <div class="card-user d-flex align-items-center mt-2">
+
+      <%= cl_image_tag item.user.photo.key, class:"avatar me-3" %>
+      <h5 class="d-inline m-0"><%= item.user.nickname %></h5>
+
+    </div>
+
+    <div class="card-text">
+
+      <p class="py-4 text-break m-0"><%= item.description %></p>
+      <p><strong>Brand: </strong><%= @item.brand %></p>
+      <p><strong>Size: </strong><%= @item.size %></p>
+      <p><strong>Colour: </strong><%= @item.color %></p>
+      <p class="text-muted m-0">Posted <%= time_ago_in_words item.created_at %> ago</p>
+
+
+    </div>
+
+  </div>
+
+</div>

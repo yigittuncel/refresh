@@ -1,0 +1,11 @@
+.order-status-confirmed{
+  border: 2px solid $green;
+}
+
+.order-status-rejected{
+  border: 2px solid $red;
+}
+
+.order-status-pending{
+ border: 2px solid $blue;
+}
