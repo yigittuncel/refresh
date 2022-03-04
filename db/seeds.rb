@@ -14,87 +14,88 @@ puts "Previous users deleted..."
 
 # Here starts the first user
 
-christina_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg")
+jaqueline_photo = URI.open("https://cdn.aboutstatic.com/file/images/12841fdab2eb2be8b2ad890d4673d02d.jpg?quality=75&height=534&width=400")
 
-christina = User.new(
-  email: "christina@christina.com",
-  password: "christina@christina.com",
-  nickname: "christina"
+jaqueline = User.new(
+  email: "jaqueline@jaqueline.com",
+  password: "jaqueline@jaqueline.com",
+  nickname: "Jaqueline Vazzola"
 )
 
-christina.photo.attach(io: christina_photo, filename: christina.email, content_type: 'image/png')
-christina.save!
-puts "User christina has been created"
+jaqueline.photo.attach(io: jaqueline_photo, filename: jaqueline.email, content_type: 'image/png')
+jaqueline.save!
+puts "User Jaqueline Vazzola has been created"
 
-christina_items = Array.new(2)
-christina_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
+jaqueline_items = Array.new(3)
+jaqueline_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/4c7c5a5bc989cf99cfc2ccae9720aeb1.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400",
+  "https://cdn.aboutstatic.com/file/images/caccc327deaaddc470213e68390022b2.jpg?quality=75&height=534&width=400",
+  "https://cdn.aboutstatic.com/file/images/cd71fa937261e93fd05c89b983582eb1.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400"
 ]
-christina_item_names = ["T-shirt", "Shorts"]
-christina_item_descriptions = [
-  "H&M Essentials. No. 7: The T-shirt. Regular-fit T-shirts in soft cotton jersey with a round, rib-trimmed neckline and a straight hem",
-  "Shorts in a cotton weave with covered elastication and a drawstring at the waist, a fake fly, diagonal side pockets and an open back pocket."
+jaqueline_item_names = ["Marlene trousers", "Crop Top 'Janey'", "Sneakers"]
+jaqueline_item_descriptions = [
+  "These marlene pants have 7/8 length and a loose fit with an elastic waistband. They are plain coloured and high waist.",
+  "Sleeveless shirt wir a narrow fit. Plain coloured and made out of jersey.",
+  "Plain coloured sneakers with platform and a treaded sole. They have a flat heel, the height is about 3 cm."
 ]
 
-christina_item_brands = ["H&M", "Zara"]
-christina_item_sizes = ["XS", "S"]
-christina_item_colors = ["brown", "light grey"]
+jaqueline_item_brands = ["H&M", "Zara", "Superga"]
+jaqueline_item_sizes = ["XS", "S", "37"]
+jaqueline_item_colors = ["coral", "beige", "white"]
 
-christina_items.each_with_index do |i, index|
+jaqueline_items.each_with_index do |i, index|
   item = Item.new(
-    name: christina_item_names[index],
-    description: christina_item_descriptions[index],
-    brand: christina_item_brands[index],
-    size: christina_item_sizes[index],
-    color: christina_item_colors[index]
+    name: jaqueline_item_names[index],
+    description: jaqueline_item_descriptions[index],
+    brand: jaqueline_item_brands[index],
+    size: jaqueline_item_sizes[index],
+    color: jaqueline_item_colors[index]
   )
 
-  christina_item_photo = URI.open(christina_item_photos[index])
-  item.photo.attach(io: christina_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "christina"
+  jaqueline_item_photo = URI.open(jaqueline_item_photos[index])
+  item.photo.attach(io: jaqueline_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Jaqueline Vazzola"
   item.save!
   puts "Item #{item.name} created!"
 end
 
-christina_outfits = Array.new(2)
-christina_outfit_descriptions = [
-  "Here I am wearing my favourite T-Shirt.",
-  "This is a very nice hat, which I bought in Barcelona."
+jaqueline_outfits = Array.new(1)
+jaqueline_outfit_descriptions = [
+  "Fresh outfit for nice summer days. I really love the colour of the pants in combination with the beige top and the white shoes."
 ]
-christina_outfit_photos = [
-  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600"
+jaqueline_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f9ee553fb438c897c0268665d4bd6ec8.jpg?quality=75&height=800&width=600"
 ]
 
-christina_outfits.each_with_index do |o, index|
+jaqueline_outfits.each_with_index do |o, index|
   outfit = Outfit.new(
-    description: christina_outfit_descriptions[index]
+    description: jaqueline_outfit_descriptions[index]
   )
-  outfit_photo = URI.open(christina_outfit_photos[index])
+  outfit_photo = URI.open(jaqueline_outfit_photos[index])
   outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "christina"
+  outfit.user = User.find_by nickname: "Jaqueline Vazzola"
   outfit.save!
   puts "Outfit created"
 end
 
-christina_outfits = Outfit.where("user_id = ?", User.last.id)
-christina_items = Item.where("user_id = ?", User.last.id)
+jaqueline_outfits = Outfit.where("user_id = ?", User.last.id)
+jaqueline_items = Item.where("user_id = ?", User.last.id)
 
 ItemOutfit.create!(
-  outfit: christina_outfits.first,
-  item: christina_items.first
+  outfit: jaqueline_outfits.first,
+  item: jaqueline_items.first
 )
 
 ItemOutfit.create!(
-  outfit: christina_outfits.first,
-  item: christina_items.second
+  outfit: jaqueline_outfits.first,
+  item: jaqueline_items.second
 )
 
 ItemOutfit.create!(
-  outfit: christina_outfits.second,
-  item: christina_items.first
+  outfit: jaqueline_outfits.first,
+  item: jaqueline_items.third
 )
+
 puts "Outfit with tagged items created"
 
 # Here starts the second user
@@ -272,10 +273,9 @@ riccardo.photo.attach(io: riccardo_photo, filename: riccardo.email, content_type
 riccardo.save!
 puts "User Riccardo Simonetti has been created"
 
-riccardo_items = Array.new(2)
+riccardo_items = Array.new(1)
 riccardo_item_photos = [
-  "https://cdn.aboutstatic.com/file/c21f17a1d4edfb1c6d45fb98bbef6319?bg=F4F4F5&quality=75&trim=1&height=534&width=400",
-  "https://cdn.aboutstatic.com/file/images/72979f78b5ac87a69a3aa63d7fae372b.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400"
+  "https://cdn.aboutstatic.com/file/c21f17a1d4edfb1c6d45fb98bbef6319?bg=F4F4F5&quality=75&trim=1&height=534&width=400"
 ]
 riccardo_item_names = ["Between-Season Jacket 'Vincent'"]
 riccardo_item_descriptions = [
