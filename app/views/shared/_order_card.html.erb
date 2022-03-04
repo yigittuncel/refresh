@@ -1,4 +1,4 @@
-<div class="card" data-controller="order-card">
+<div class="card" data-controller="order-card" data-order-card-target="card">
 
   <div class="card-header d-flex justify-content-center">
     <h5>
@@ -63,15 +63,21 @@
     <div class="row" data-order-card-target="content">
 
       <div class="col-6">
-        <%= simple_form_for order:order, html: { data: { order_card_target: "form", action: "submit->order-card#update" } } do |f| %>
-          <%# f.submit "Confirm", class: "btn btn-sm btn-primary btn-block mt-2" %>
+        <%= simple_form_for order, html: { data: {
+              order_card_target: "reject",
+              action: "submit->order-card#reject" } } do |f| %>
+          <%= f.hidden_field :status, value: "rejected" %>
+          <%= f.submit "Reject", class: "btn btn-sm btn-primary btn-block mt-2" %>
         <% end %>
       </div>
 
       <div class="col-6">
-        <%# simple_form_for order, html: { data: { order_card_target: "form", action: "submit->order-card#update" } } do |f| %>
-          <%# f.submit "Reject", class: "btn btn-sm btn-primary btn-block mt-2" %>
-        <%# end %>
+        <%= simple_form_for order, html: { data: {
+              order_card_target: "confirm",
+              action: "submit->order-card#confirm" } } do |f| %>
+          <%= f.hidden_field :status, value: "confirmed" %>
+          <%= f.submit "Confirm", class: "btn btn-sm btn-primary btn-block mt-2" %>
+        <% end %>
       </div>
 
     </div>
