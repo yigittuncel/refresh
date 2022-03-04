@@ -430,11 +430,21 @@ puts "Outfit with tagged items created"
   )
 
   Order.create!(
-    buyer: User.first, offered_item: Item.third, seller: User.last, desired_item: Item.last
+    buyer: User.find_by(nickname: 'Jaqueline'),
+    offered_item: User.find_by(nickname: 'Jaqueline').items.third,
+    seller: User.find_by(nickname: 'mariorzgz'),
+    desired_item: User.find_by(nickname: 'mariorzgz').items.last
   )
 
+  puts "First order created"
+
   Order.create!(
-    buyer: User.first, offered_item: Item.second, seller: User.last, desired_item: Item.all[-2]
+    buyer: User.find_by(nickname: 'Jaqueline'),
+    offered_item: User.find_by(nickname: 'Jaqueline').items.second,
+    seller: User.find_by(nickname: 'mariorzgz'),
+    desired_item: User.find_by(nickname: 'mariorzgz').items.second
   )
+
+  puts "Second order created"
 
 # Ends User Mario
