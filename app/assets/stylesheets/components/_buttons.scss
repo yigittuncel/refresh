@@ -1,12 +1,12 @@
 .btn-action {
-  color: #0A2BFF;
-  background-color: #ADB8FF;
+  color: $ultrablue;
+  background-color: $lightblue;
   border-radius: 15px;
   padding: 10px 35px;
   font-weight: bold;
   transition: background 0.3s ease;
 
-  background: linear-gradient(#ADB8FF, #ADB8FF);
+  background: linear-gradient($lightblue, $lightblue);
   transition: background 0.3s ease;
 }
 
@@ -15,7 +15,7 @@
 }
 
 .btn-item-count {
-  color: #FFF5D6;
-  background-color: #F5BC00;
+  color: $lightyellow;
+  background-color: $yellow;
   padding: 5px 10px;
 }
