@@ -6,16 +6,7 @@
 
       <%= cl_image_tag @item.photo.key, height: 300 , width: 350, crop: :fill %>
 
-      <%= link_to dashboard_path(@item.user) do %>
-
-        <div class="user-info d-flex align-items-center mt-2">
-
-          <%= cl_image_tag @item.user.photo.key, class:"avatar me-3" %>
-          <h5 class="d-inline m-0"><%= @item.user.nickname %></h5>
-
-        </div>
-
-      <% end %>
+      <%= render partial: "shared/user_info", locals: { user: @item.user } %>
 
       <div class="item-info">
 
