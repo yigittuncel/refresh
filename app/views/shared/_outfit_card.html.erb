@@ -1,4 +1,4 @@
-<div class="card position-relative mb-4 p-0 border-0">
+<div class="card position-relative mb-4 p-0 border-0 bg-transparent">
 
   <div class="card-outfit-item-count btn btn-success rounded-pill position-absolute"
   data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
@@ -10,7 +10,7 @@
        data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal">
   </div>
 
-  <div class="card-body">
+  <div class="card-body bg-white border-top border-5 border-secondary p-4">
 
     <%= render partial: "shared/user_info", locals: { user: outfit.user } %>
 
@@ -18,7 +18,7 @@
 
       <p class="py-4 text-break m-0"><%= outfit.description %></p>
       <%= link_to outfit_path(outfit) do %>
-        <p class="text-muted m-0">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
+        <p class="text-muted badge bg-primary">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
       <% end %>
 
     </div>
@@ -28,7 +28,7 @@
 </div>
 
 <div class="modal fade p-0" id="outfit<%= outfit.id %>Modal" tabindex="-1" aria-labelledby="outfit<%= outfit.id %>ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down ">
+  <div class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content py-3">
       <div class="modal-header border-0 py-2">
         <h5 class="modal-title" id="outfit<%= outfit.id %>ModalLabel">Items in this outfit</h5>

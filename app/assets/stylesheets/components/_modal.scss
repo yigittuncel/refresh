@@ -10,3 +10,9 @@
   }
 
 }
+
+#chooseSubmit{
+  .modal-dialog{
+    $modal-scale-transform: scale(1.02);
+  }
+}
