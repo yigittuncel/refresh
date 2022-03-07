@@ -1,26 +1,26 @@
-<div class="navbar py-0 navbar-expand-sm navbar-light navbar-lewagon fixed-top d-flex justify-content-center flex-column bg-transparent">
-  <div class="container py-2 bg-#FFF5D6 border-bottom-color #FFCB1F">
+<!-- Button to submit item or outfit -->
+
+<div class="submit-button nav-item d-flex align-items-center justify-content-center position-fixed start-50 translate-middle-x">
+
+  <button type="button" class="btn btn-secondary rounded-circle btn-lg position-fixed" data-bs-toggle="modal" data-bs-target="#chooseSubmit">
+  +
+  </button>
+
+</div>
+
+<!-- Button trigger modal -->
+
+
+
+<div class="navbar py-0 navbar-expand-sm navbar-light navbar-lewagon fixed-top d-flex justify-content-center flex-column ">
+  <div class="px-2 py-2 d-flex justify-content-between w-100">
 
       <%= link_to root_path, class: "navbar-brand d-flex align-items-center justify-content-start" do %>
-        <h2 class="m-0">Refresh</h2>
+        <h2 class="mt-2">Refresh</h2>
       <% end %>
 
 
         <% if user_signed_in? %> <!-- Logged in -->
-
-          <div class="nav-item d-flex align-items-center justify-content-center position-absolute start-50 translate-middle-x">
-
-            <!-- Button to submit item or outfit -->
-
-            <div class="btn btn-action rounded-circle btn-lg"
-               data-bs-toggle="collapse" data-bs-target="#chooseSubmit"
-               aria-expanded="false" aria-controls="chooseSubmit">
-               +
-            </div>
-
-          </div>
-
-
 
           <div class="nav-item d-flex align-items-center justify-content-end">
 
@@ -76,18 +76,33 @@
 
         <% end %>
   </div>
+</div>
 
-  <div class="collapse" id="chooseSubmit">
+<!-- Modal -->
+<div class="modal fade scale" id="chooseSubmit" tabindex="-1" aria-labelledby="chooseSubmitLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content bg-white align-items-center position-relative">
 
-    <div class="row p-3">
-      <div class="col-6 d-flex align-items-center justify-content-center">
-          <%= link_to "Item", new_item_path, class: "btn btn-action" %>
-      </div>
-      <div class="col-6 d-flex align-items-center justify-content-center">
-          <%= link_to "Outfit", new_outfit_path, class: "btn btn-action" %>
+      <p class="py-2 refresh-badge rounded-pill position-absolute">Add your style</h2>
+
+      <div class="row px-3 py-5">
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <%= link_to new_item_path, class: "btn btn-primary rounded-circle", method: :get  do %>
+              <div class="choose-card">
+                <h2><i class="fas fa-tshirt"></i></h2>
+                <h3>Item</h3>
+              </div>
+            <% end %>
+        </div>
+        <div class="col-6 d-flex align-items-center justify-content-center">
+            <%= link_to new_outfit_path, class: "btn btn-primary rounded-circle", method: :get  do %>
+                <div class="choose-card">
+                  <h2><i class="fas fa-child"></i></h2>
+                  <h3>Outfit</h3>
+              </div>
+            <% end %>
+        </div>
       </div>
     </div>
-
   </div>
-
 </div>

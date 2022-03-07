@@ -1,0 +1,41 @@
+.choose-card{
+  aspect-ratio: 1;
+  width: 15vw;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h3, h2{
+    color: $ultrablue;
+  }
+}
+
+#chooseSubmit{
+  background: transparent;
+  .btn-primary{
+
+  }
+  .modal-content{
+    border-radius: 50px;
+    border: $ultrablue solid 3px;
+  }
+}
+
+@media (max-width:500px) {
+  .choose-card{
+    width: 33vw;
+  }
+}
+
+.refresh-badge{
+  background-color: white;
+  border: $ultrablue solid 2px;
+  transform: translate(0, -50%);
+  text-align: center;
+  font-weight: bold;
+  color: $ultrablue;
+  width: 50%;
+  position: absolute;
+  border-radius: 50px;
+}

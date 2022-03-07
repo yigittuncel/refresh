@@ -7,16 +7,20 @@
 $font-family-sans-serif:  $body-font;
 $headings-font-family:    $headers-font;
 $body-bg:                 $lightyellow;
-$font-size-base:          1rem;
-$headings-color:          $darkblue;
+$font-size-base: 1rem;
 
 // Colors
 $body-color: $gray;
+
 $primary:    $lightblue;
-$success:    $lightyellow;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$secondary:  $yellow;
+$success:    $yellow;
+$info:       $lightgreen;
+$danger:     $lightred;
+$warning:    $lightpurple;
+$font-size-base:          1rem;
+$headings-color:          $darkblue;
+
 
 // Buttons & inputs' radius
 $border-radius:    2px;
@@ -27,9 +31,7 @@ $border-radius-sm: 2px;
 
 
 
-$modal-backdrop-opacity:            .5;
-
-
-$modal-fade-transform:              translate(0px, 250px);
-$modal-show-transform:              none;
-$modal-transition:                  transform .3s ease-out;
+$modal-backdrop-opacity: .5;
+$modal-fade-transform: translate(0px, 250px);
+$modal-show-transform: none;
+$modal-transition: transform .3s ease-out;

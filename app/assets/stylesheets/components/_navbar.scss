@@ -1,6 +1,7 @@
 .navbar-lewagon {
+  z-index: 10;
   justify-content: space-between;
-  background: #FFF5D6;
+  background: $lightyellow;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -9,4 +10,9 @@
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.submit-button{
+  top: 35px;
+  z-index: 20;
 }
