@@ -12,7 +12,7 @@
 
             <!-- Button to submit item or outfit -->
 
-            <div class="btn btn-success rounded-circle btn-lg"
+            <div class="btn btn-action rounded-circle btn-lg"
                data-bs-toggle="collapse" data-bs-target="#chooseSubmit"
                aria-expanded="false" aria-controls="chooseSubmit">
                +
@@ -71,7 +71,7 @@
         <% else %> <!-- Not logged in -->
 
           <div class="nav-item d-flex align-items-center justify-content-center">
-            <%= link_to "Login", new_user_session_path, class: "btn btn-success" %>
+            <%= link_to "Login", new_user_session_path, class: "btn btn-action" %>
           </div>
 
         <% end %>
@@ -81,10 +81,10 @@
 
     <div class="row p-3">
       <div class="col-6 d-flex align-items-center justify-content-center">
-          <%= link_to "Item", new_item_path, class: "btn btn-success" %>
+          <%= link_to "Item", new_item_path, class: "btn btn-action" %>
       </div>
       <div class="col-6 d-flex align-items-center justify-content-center">
-          <%= link_to "Outfit", new_outfit_path, class: "btn btn-success" %>
+          <%= link_to "Outfit", new_outfit_path, class: "btn btn-action" %>
       </div>
     </div>
 
