@@ -6,13 +6,22 @@
       <p><%= @user.nickname %></p>
     </div>
 
-    <div>
-      <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
-    </div>
+    <% if @user == current_user %>
+
+      <div>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
+      </div>
+
+     <% end %>
   </div>
 
+
   <div>
-    <h3 class="dashboard-title mt-4">Your dashboard</h3>
+
+    <% if @user == current_user %>
+      <h3 class="dashboard-title mt-4">Your dashboard</h3>
+    <% end %>
+
     <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
         <button class="nav-link active" id="outfits-tab" data-bs-toggle="tab" data-bs-target="#outfits" type="button" role="tab" aria-controls="outfits" aria-selected="true">
