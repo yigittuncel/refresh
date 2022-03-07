@@ -2,20 +2,52 @@
 <div class="container">
   <div class="row d-flex justify-content-center p-0 m-0">
 
-    <div class="col-lg-5 col-md-6 col-sm-12 p-0 border">
+    <div class="col-lg-5 col-md-6 col-sm-12 p-0">
 
-      <%= cl_image_tag @item.photo.key, height: 300 , width: 350, crop: :fill %>
+      <div class="item-show d-flex justify-content-between align-items-center pb-2 mb-4">
+        <%= link_to root_path do %>
+          <i class="fas fa-chevron-left fa-lg"></i>
+        <% end %>
+        <h2 class="m-0"><%= @item.name %></h2>
+        <p class="m-0">✨</p>
+      </div>
 
-      <%= render partial: "shared/user_info", locals: { user: @item.user } %>
+
+
+      <div class="card-item-img mb-4"
+       style="background-image:url(<%= cl_image_path @item.photo.key %>)">
+      </div>
+
+
+      <%= link_to dashboard_path(@item.user) do %>
+
+        <div class="user-info-item d-flex align-items-center mt-2">
+
+          <div>
+            <%= cl_image_tag @item.user.photo.key, class:"avatar me-3 border-yellow" %>
+          </div>
+          <div class="d-flex flex-column">
+            <p class="d-inline m-0"><%= @item.user.nickname %></p>
+            <p class="d-inline m-0 item-time"><%= @item.created_at.strftime(" %A, %w %b") %></p>
+          </div>
+
+        </div>
+
+      <% end %>
+
 
       <div class="item-info">
+        <p class="item-info-title">Description</p>
 
-        <h1><%= @item.name %></h1>
-        <p>Description: <%= @item.description %>Description</p>
-        <p>Brand: <%= @item.brand %></p>
-        <p>Size: <%= @item.size %></p>
-        <p>Colour: <%= @item.color %></p>
+        <p><%= @item.description %></p>
+      </div>
 
+      <div class="item-info">
+        <p class="item-info-title">Item Details</p>
+
+        <p><strong>Brand</strong><%= @item.brand %></p>
+        <p><strong>Size</strong>  <%= @item.size %></p>
+        <p><strong>Colour</strong>  <%= @item.color %></p>
       </div>
 
 
@@ -28,7 +60,7 @@
 
     </div>
 
-    <div class="col-lg-3 col-md-3 col d-none d-sm-block p-0">
+    <div class="col-lg-3 col-md-3 col p-0">
      <div class="sidebar container sticky-top">
 
         <h5>Outfits this item appears</h5>
