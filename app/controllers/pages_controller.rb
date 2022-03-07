@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:feed]
+  skip_before_action :authenticate_user!, only: [:feed, :dashboard]
 
   def feed
     @outfits = Outfit.all.order('created_at DESC')
