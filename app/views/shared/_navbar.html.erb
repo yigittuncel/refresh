@@ -54,7 +54,7 @@
 
                 <% else %> <!-- User has an avatar -->
 
-                  <%= link_to dashboard_path do %>
+                  <%= link_to dashboard_path(current_user) do %>
                     <%= cl_image_tag current_user.photo.key , class: "avatar" %>
                   <% end %>
 
