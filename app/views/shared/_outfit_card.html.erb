@@ -14,12 +14,16 @@
 
   <div class="card-body">
 
-    <div class="card-user d-flex align-items-center mt-2">
+    <%= link_to dashboard_path(outfit.user) do %>
 
-      <%= cl_image_tag outfit.user.photo.key, class:"avatar me-3" %>
-      <h5 class="d-inline m-0"><%= outfit.user.nickname %></h5>
+      <div class="card-user d-flex align-items-center mt-2">
 
-    </div>
+        <%= cl_image_tag outfit.user.photo.key, class:"avatar me-3" %>
+        <h5 class="d-inline m-0"><%= outfit.user.nickname %></h5>
+
+      </div>
+
+    <% end %>
 
     <div class="card-text">
 
