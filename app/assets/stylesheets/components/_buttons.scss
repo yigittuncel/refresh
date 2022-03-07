@@ -1,7 +1,6 @@
-.btn-offer {
+.btn-action {
   color: #0A2BFF;
   background-color: #ADB8FF;
-  border-color: #0A2BFF;
   border-radius: 15px;
   padding: 15px;
   font-weight: bold;
@@ -9,10 +8,13 @@
 
   background: linear-gradient(#ADB8FF, #ADB8FF);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
 }
 
-.btn-offer:hover {
+.btn-action:hover {
   background: linear-gradient(#ADB8FF, #0A2BFF);
-  color: #000E66;
+  color: white;
+}
+
+.btn-login {
+
 }
