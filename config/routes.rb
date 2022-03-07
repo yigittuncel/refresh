@@ -10,4 +10,7 @@ Rails.application.routes.draw do
 
   get '/dashboard/:id', to: 'pages#dashboard', as: :dashboard
   get "/trades", to: "pages#trades"
+  resources :chatrooms, only: %i[show] do
+    resources :messages, only: :create
+  end
 end

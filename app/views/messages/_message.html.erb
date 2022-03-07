@@ -1,0 +1,7 @@
+<div id="message-<%= message.id %>" class="<%= current_user == chatroom.order.seller ? "hello" : "mello" %>" >
+  <small>
+    <strong><%= message.user.nickname %></strong>
+    <i><%= message.created_at.strftime("%a %b %e at %l:%M %p") %></i>
+  </small>
+  <p><%= message.content %></p>
+</div>

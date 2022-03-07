@@ -11,3 +11,15 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+a{
+  color: $darkblue;
+  text-decoration: none;
+  &:hover {
+    color: $ultrablue;
+}
+}
+
+h1 {
+  color: $darkblue
+}
