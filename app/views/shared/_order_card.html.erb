@@ -87,7 +87,7 @@
     <div class="row d-flex justify-content-center" data-order-card-target="content">
 
       <div class="col-6 d-flex justify-content-center">
-        <%= link_to "#" do %>
+        <%= link_to chatroom_path(order.chatroom) do %>
           <div class="btn btn-success">
           Send
           <%= current_user == order.buyer ? order.seller.nickname : order.buyer.nickname %>

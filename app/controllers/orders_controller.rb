@@ -18,6 +18,12 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(params_order)
 
+    if @order.status == "confirmed"
+      @chatroom = Chatroom.create(
+        order: @order
+      )
+    end
+
     respond_to do |format|
       format.html { redirect_to trades_path }
       format.text { render partial: "shared/order_card", locals: { order: @order }, formats: [:html] }
