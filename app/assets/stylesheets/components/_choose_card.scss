@@ -1,0 +1,25 @@
+.choose-card{
+  aspect-ratio: 1;
+  width: 20vw;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  h3, h2{
+    color: $ultrablue;
+  }
+}
+
+#chooseSubmit{
+  background: transparent;
+  .btn-primary{
+    border: $ultrablue solid 3px;
+  }
+}
+
+@media (max-width:500px) {
+  .choose-card{
+    width: 33vw;
+  }
+}

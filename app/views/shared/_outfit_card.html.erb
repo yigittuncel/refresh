@@ -1,6 +1,6 @@
 <div class="card position-relative mb-4 p-0 border-0 bg-transparent">
 
-  <div class="card-outfit-item-count btn-item-count rounded-pill position-absolute"
+  <div class="btn btn-secondary card-outfit-item-count btn-item-count rounded-pill position-absolute"
   data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
     <%= outfit.items.count %> <i class="fas fa-tshirt"></i>
   </div>
@@ -10,13 +10,13 @@
        data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal">
   </div>
 
-  <div class="card-body bg-white border-top border-5 border-secondary p-4">
+  <div class="card-body bg-white border-top border-5 border-secondary px-3">
 
     <%= render partial: "shared/user_info", locals: { user: outfit.user } %>
 
     <div class="card-text d-flex flex-column">
 
-      <p class="py-4 text-break m-0"><%= outfit.description %></p>
+      <p class="py-3 text-break m-0"><%= outfit.description %></p>
       <%= link_to outfit_path(outfit), class: "align-self-end" do %>
         <p class="text-align-right rounded-pill badge bg-primary">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
       <% end %>
