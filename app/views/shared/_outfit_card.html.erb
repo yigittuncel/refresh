@@ -14,11 +14,11 @@
 
     <%= render partial: "shared/user_info", locals: { user: outfit.user } %>
 
-    <div class="card-text">
+    <div class="card-text d-flex flex-column">
 
       <p class="py-4 text-break m-0"><%= outfit.description %></p>
-      <%= link_to outfit_path(outfit) do %>
-        <p class="text-muted badge bg-primary">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
+      <%= link_to outfit_path(outfit), class: "align-self-end" do %>
+        <p class="text-align-right rounded-pill badge bg-primary">Posted <%= time_ago_in_words outfit.created_at %> ago</p>
       <% end %>
 
     </div>
