@@ -12,19 +12,25 @@
 
       <div class="item-card card">
 
-        <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
-        </div>
+        <%= link_to item_path(order.desired_item) do %>
+          <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
+          </div>
+        <% end %>
 
         <div class="card-header d-flex flex-column justify-content-center">
 
           <h4>
-            <%= order.desired_item.name %>
+            <%= link_to order.desired_item.name, item_path(order.desired_item) %>
           </h4>
 
-          <div class="user-info">
-            <%= cl_image_tag order.seller.photo.key, class: "avatar" %>
-            <%= order.seller.nickname %>
-          </div>
+          <%= link_to dashboard_path(order.seller) do %>
+
+            <div class="user-info">
+              <%= cl_image_tag order.seller.photo.key, class: "avatar" %>
+              <%= order.seller.nickname %>
+            </div>
+
+          <% end %>
 
         </div>
 
@@ -36,19 +42,25 @@
 
       <div class="item-card card">
 
-          <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
-          </div>
+          <%= link_to item_path(order.offered_item) do %>
+            <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
+            </div>
+          <% end %>
 
           <div class="card-header d-flex flex-column justify-content-center">
 
             <h4>
-              <%= order.offered_item.name %>
+              <%= link_to order.offered_item.name, item_path(order.offered_item) %>
             </h4>
 
-            <div class="user-info">
-              <%= cl_image_tag order.buyer.photo.key, class: "avatar" %>
-              <%= order.buyer.nickname %>
-            </div>
+            <%= link_to dashboard_path(order.buyer) do %>
+
+              <div class="user-info">
+                <%= cl_image_tag order.buyer.photo.key, class: "avatar" %>
+                <%= order.buyer.nickname %>
+              </div>
+
+            <% end %>
 
           </div>
 
