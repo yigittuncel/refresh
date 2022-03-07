@@ -7,9 +7,9 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    @user = current_user
-    @outfits = current_user.outfits
-    @items = current_user.items
+    @user = User.find(params[:id])
+    @outfits = @user.outfits
+    @items = @user.items
   end
 
   def trades

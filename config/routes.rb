@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   end
   resources :orders, only: [:show, :update]
   resources :outfits, only: %i[new create show]
-  get "/dashboard", to: "pages#dashboard"
+  get "/dashboard/:id", to: "pages#dashboard"
   get "/trades", to: "pages#trades"
 end
