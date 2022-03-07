@@ -38,7 +38,7 @@
         <ul class="list-group pb-3">
         <% @users.each do |user| %>
 
-          <li class="list-group-item border-0"><%= cl_image_tag user.photo.key, class: "avatar me-2" %><%= user.nickname %></li>
+        <%= render partial: "shared/user_info", locals: { user: user } %>
 
         <% end %>
         </ul>

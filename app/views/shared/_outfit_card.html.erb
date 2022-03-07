@@ -12,12 +12,7 @@
 
   <div class="card-body">
 
-    <div class="card-user d-flex align-items-center mt-2">
-
-      <%= cl_image_tag outfit.user.photo.key, class:"avatar me-3" %>
-      <h5 class="d-inline m-0"><%= outfit.user.nickname %></h5>
-
-    </div>
+    <%= render partial: "shared/user_info", locals: { user: outfit.user } %>
 
     <div class="card-text">
 
