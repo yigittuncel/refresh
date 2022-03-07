@@ -17,4 +17,7 @@ class User < ApplicationRecord
 
   has_many :receiving_orders, foreign_key: "seller_id", class_name: 'Orders'
   has_many :offering_orders, foreign_key: "buyer_id", class_name: 'Orders'
+
+  validates :nickname, uniqueness: true
+  validates :email, uniqueness: true
 end
