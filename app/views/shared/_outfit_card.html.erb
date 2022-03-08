@@ -1,9 +1,11 @@
 <div class="card position-relative mb-4 p-0 border-0 bg-transparent">
 
-  <div class="btn btn-secondary card-outfit-item-count btn-item-count rounded-pill position-absolute"
-  data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
-    <%= outfit.items.count %> <i class="fas fa-tshirt"></i>
-  </div>
+  <% if outfit.items.present? %>
+    <div class="btn btn-secondary card-outfit-item-count btn-item-count rounded-pill position-absolute"
+    data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
+      <%= outfit.items.count %> <i class="fas fa-tshirt"></i>
+    </div>
+  <% end %>
 
   <div class="card-outfit-img"
        style="background-image:url(<%= cl_image_path outfit.photo.key %>)"
@@ -27,22 +29,26 @@
 
 </div>
 
-<div class="modal fade p-0" id="outfit<%= outfit.id %>Modal" tabindex="-1" aria-labelledby="outfit<%= outfit.id %>ModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-fullscreen-md-down">
-    <div class="modal-content py-3">
-      <div class="modal-header border-0 py-2">
-        <h5 class="modal-title" id="outfit<%= outfit.id %>ModalLabel">Items in this outfit</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
+<% if outfit.items.present? %>
 
-      <div class="modal-body m-0 py-4 px-2">
-        <div class="d-flex flex-row">
-          <% outfit.items.each do |item| %>
-            <%= render partial: "shared/item_card", locals: { item: item } %>
-          <% end %>
+  <div class="modal fade p-0 " id="outfit<%= outfit.id %>Modal" tabindex="-1" aria-labelledby="outfit<%= outfit.id %>ModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen-md-down ">
+      <div class="modal-content p-3 border-0">
+        <div class="modal-header border-0 py-2">
+          <h6 class="modal-title text-center" id="outfit<%= outfit.id %>ModalLabel">Items in this outfit</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      </div>
 
+        <div class="modal-body m-0 py-2 px-2 overflow-auto">
+          <div class="d-flex flex-row">
+            <% outfit.items.each do |item| %>
+              <%= render partial: "shared/item_card", locals: { item: item } %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>
