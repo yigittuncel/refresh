@@ -1,6 +1,6 @@
 .choose-card{
   aspect-ratio: 1;
-  width: 15vw;
+  width: 10vw;
   display: flex;
   align-content: center;
   flex-direction: column;
@@ -9,6 +9,7 @@
   h3, h2{
     color: $ultrablue;
   }
+
 }
 
 #chooseSubmit{
@@ -18,7 +19,13 @@
   }
   .modal-content{
     border-radius: 50px;
-    border: $ultrablue solid 3px;
+    border: $yellow solid 3px;
+  }
+  .refresh-badge{
+    width: 40%;
+    border: $yellow solid 3px;
+    background-color: $lightyellow;
+    color: $darkgrey;
   }
 }
 
