@@ -2,6 +2,10 @@
   z-index: 10;
   justify-content: space-between;
   background: $lightyellow;
+  color: $darkblue;
+  a{
+    color: $darkblue;
+  }
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -15,4 +19,8 @@
 .submit-button{
   top: 35px;
   z-index: 20;
+  .btn{
+    font-weight: bold;
+    color: $darkblue;
+  }
 }
