@@ -1,29 +1,30 @@
-<div class="card order-status-<%= order.status %> mb-4" data-controller="order-card" data-order-card-target="card">
+<div class="mt-4 card order-card position-relative align-items-center order-status-<%= order.status %> mb-4" data-controller="order-card" data-order-card-target="card">
 
-  <div class="card-header d-flex justify-content-center">
-    <h5>
-      <%= order.status.capitalize %>
-    </h5>
-  </div>
+  <p class="refresh-badge"><%= order.status.capitalize %></p>
 
-  <div class="row d-flex align-items-stretch">
+  <div class="row d-flex pt-3 align-items-stretch justify-content-center mt-2 gx-0 w-100">
 
-    <div class="col-6">
+    <div class="col-5 col-md-5 col-lg-4">
 
-      <div class="item-card card">
+      <div class="item-card card border-0">
 
         <%= link_to item_path(order.desired_item) do %>
-          <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
+          <div class="img-item-card" style="background-image:url('<%= cl_image_path order.desired_item.photo.key %>')">
           </div>
         <% end %>
 
-        <div class="card-header d-flex flex-column justify-content-center">
+        <div class="d-flex flex-column justify-content-center">
 
-          <h4>
-            <%= link_to order.desired_item.name, item_path(order.desired_item) %>
-          </h4>
+            <%= link_to dashboard_path(order.seller) do %>
 
-          <%= render partial: "shared/user_info", locals: { user: order.seller } %>
+              <div class="user-info d-flex align-items-center mt-2">
+
+                <%= cl_image_tag order.seller.photo.key, class:"avatar me-2 border-yellow" %>
+                <p class="d-inline m-0"><%= order.seller.nickname %></p>
+
+              </div>
+
+            <% end %>
 
         </div>
 
@@ -31,22 +32,33 @@
 
     </div>
 
-    <div class="col-6">
+    <div class="col-2 d-flex align-items-center justify-content-center">
 
-      <div class="item-card card">
+      <h3><i class="fas fa-exchange-alt text-secondary"></i></h3>
+
+    </div>
+
+    <div class="col-5 col-md-5 col-lg-4">
+
+      <div class="item-card card border-0">
 
           <%= link_to item_path(order.offered_item) do %>
-            <div class="img-item-card rounded-3" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
+            <div class="img-item-card" style="background-image:url('<%= cl_image_path order.offered_item.photo.key %>')">
             </div>
           <% end %>
 
-          <div class="card-header d-flex flex-column justify-content-center">
+          <div class="d-flex flex-column justify-content-center">
 
-            <h4>
-              <%= link_to order.offered_item.name, item_path(order.offered_item) %>
-            </h4>
+            <%= link_to dashboard_path(order.buyer) do %>
 
-            <%= render partial: "shared/user_info", locals: { user: order.buyer } %>
+              <div class="user-info d-flex align-items-center mt-2">
+
+                <%= cl_image_tag order.buyer.photo.key, class:"avatar me-2 border-yellow" %>
+                <p class="d-inline m-0"><%= order.buyer.nickname %></p>
+
+              </div>
+
+            <% end %>
 
           </div>
 
@@ -56,64 +68,68 @@
 
   </div>
 
-  <% if current_user == order.seller && order.pending? %>
+  <div class="row d-flex justify-content-center align-items-center w-100 pt-3 pb-4" data-order-card-target="content">
 
-    <div class="row" data-order-card-target="content">
+    <% if current_user == order.seller && order.pending? %>
 
-      <div class="col-6">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+      <hr class="border-top border-secondary border-3">
+      </div>
+
+      <div class="col-4 d-flex justify-content-center align-items-center">
         <%= simple_form_for order, html: { data: {
               order_card_target: "reject",
               action: "submit->order-card#reject" } } do |f| %>
           <%= f.hidden_field :status, value: "rejected" %>
-          <%= f.submit "Reject", class: "btn btn-sm btn-primary btn-block mt-2" %>
+          <%= f.submit "Reject", class: "px-4 py-2 btn btn-sm btn-danger btn-block mt-2 rounded-pill" %>
         <% end %>
       </div>
 
-      <div class="col-6">
+      <div class="col-4 d-flex justify-content-center align-items-center">
         <%= simple_form_for order, html: { data: {
               order_card_target: "confirm",
               action: "submit->order-card#confirm" } } do |f| %>
           <%= f.hidden_field :status, value: "confirmed" %>
-          <%= f.submit "Confirm", class: "btn btn-sm btn-success btn-block mt-2" %>
+          <%= f.submit "Confirm", class: "px-4 py-2 btn btn-sm btn-primary btn-block mt-2 rounded-pill" %>
         <% end %>
       </div>
 
-    </div>
 
-  <% end %>
+    <% else %>
 
-  <% if order.confirmed? %>
+      <div class="col-lg-8 col-md-8 col-12 d-flex justify-content-center">
 
-    <div class="row d-flex justify-content-center" data-order-card-target="content">
+        <% if order.confirmed? %>
 
-      <div class="col-6 d-flex justify-content-center">
-        <%= link_to chatroom_path(order.chatroom) do %>
-          <div class="btn btn-success">
-          Send
-          <%= current_user == order.buyer ? order.seller.nickname : order.buyer.nickname %>
-          a message
-          </div>
+          <%= link_to chatroom_path(order.chatroom) do %>
+
+            <div class="px-4 py-2 btn btn-primary rounded-pill">
+              Send
+              <%= current_user == order.buyer ? order.seller.nickname : order.buyer.nickname %>
+              a message
+              <i class="ms-2 far fa-paper-plane"></i>
+            </div>
+
+          <% end %>
+
+        <% elsif order.rejected? %>
+
+          <%= link_to "#" do %>
+
+            <div class="px-4 py-2 btn btn-warning rounded-pill">
+            Delete this trade offer
+            <i class="ms-2 far fa-trash-alt"></i>
+            </div>
+
+          <% end %>
+
         <% end %>
+
       </div>
 
-    </div>
+    <% end %>
 
-  <% end %>
+  </div>
 
-  <% if order.rejected? %>
-
-    <div class="row d-flex justify-content-center" data-order-card-target="content">
-
-      <div class="col-6 d-flex justify-content-center">
-        <%= link_to "#" do %>
-          <div class="btn btn-danger">
-          Delete this trade offer
-          </div>
-        <% end %>
-      </div>
-
-    </div>
-
-  <% end %>
 
 </div>

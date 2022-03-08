@@ -1,0 +1,29 @@
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link{
+  color: $ultrablue;
+  &:hover{
+    background-color: $lightblue;
+    color: $ultrablue;
+  }
+}
+
+.nav-link{
+  color: $ultrablue;
+}
+
+.nav-pills .nav-link{
+  &:hover{
+    background-color: $lightblue;
+    color: $ultrablue;
+  }
+}
+
+
+
+.btn-action{
+  .nav-link{
+    color: $ultrablue;
+    .active{
+      color: $ultrablue;
+    }
+  }
+}

@@ -1,3 +1,61 @@
+.order-card{
+  border-radius: 50px;
+  .img-item-card{
+    border-radius: 50px;
+    aspect-ratio: 1;
+  }
+  &.order-status-confirmed{
+    border: 3px solid $yellow;
+    .refresh-badge{
+      border: $yellow solid 2px;
+      background-color: $lightyellow;
+      color: $darkgrey;
+    }
+  }
+
+  &.order-status-rejected{
+    border: 3px solid $darkgrey;
+    .refresh-badge{
+      color: $darkgrey;
+      background-color: $lightgrey;
+      border: $darkgrey solid 2px;
+    }
+    .item-card{
+      opacity: .5;
+    }
+  }
+
+  &.order-status-pending{
+   border: 3px solid $ultrablue;
+   .refresh-badge{
+    border: $ultrablue solid 2px;
+   }
+  }
+  .user-info{
+    font-weight: bold;
+    color: $darkblue;
+  }
+  hr{
+    border-color: $yellow;
+    background: transparent;
+    width: 50%;
+    opacity: 1;
+  }
+  .btn-primary{
+    font-weight: bold;
+    color: $ultrablue;
+  }
+  .btn-warning{
+    font-weight: bold;
+    color: $darkgrey;
+  }
+  .btn-danger{
+    font-weight: bold;
+    color: $darkred;
+    opacity: 1;
+  }
+}
+
 .order-status-confirmed{
   border: 2px solid $lightyellow;
 }
