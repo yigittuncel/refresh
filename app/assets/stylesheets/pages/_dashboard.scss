@@ -1,9 +1,9 @@
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  background-color: #574160;
+  background-color: $lightblue;
 }
 
 .nav-link {
-  color: #574160;
+  color: $ultrablue;
 }
 
 .nav-link:hover {
@@ -18,4 +18,5 @@
   aspect-ratio: 1;
   background-size: cover;
   background-position: center;
+  width: 100%;
 }
