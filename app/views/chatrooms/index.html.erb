@@ -1,31 +1,45 @@
-<h2>Your message</h2>
+<div class="row mx-auto d-flex justify-content-center gx-4 ">
+  <div class="col-lg-8 col-sm-12">
 
-<% if @chatrooms.present? %>
-  <% @chatrooms.each do |chatroom| %>
-    <%= link_to chatroom_path(chatroom) do %>
-      <div class="message-card">
-        <% if chatroom.order.buyer == current_user %>
-          <%= cl_image_tag chatroom.order.seller.photo.key, class: "avatar" %>
-          <%# <p class="message-nickname"><%= chatroom.order.seller.nickname %></p>
-        <% else %>
-          <%= cl_image_tag chatroom.order.buyer.photo.key, class: "avatar" %>
-          <%# <p class="message-nickname"><%= chatroom.order.buyer.nickname %></p>
-        <% end %>
+    <div class="item-show d-flex justify-content-between align-items-center pb-2 mb-4">
+      <%= link_to root_path do %>
+        <i class="fas fa-chevron-left fa-lg"></i>
+      <% end %>
+      <h5 class="m-0">Your messages</h5>
+      <p class="m-0">✨</p>
+    </div>
 
-        <div class="flex-grow-1">
-          <p class="message-item"><%= chatroom.order.desired_item.name %></p>
-          <div class="d-flex justify-content-between">
-            <% if chatroom.messages.present? %>
-              <p class="message-text"><%= chatroom.messages.last.content.size > 20 ? "#{chatroom.messages.last.content.first(20)}..." : chatroom.messages.last.content %></p>
-              <p class="message-time"><%= time_ago_in_words chatroom.messages.last.created_at %> ago</p>
+
+    <% if @chatrooms.present? %>
+      <% @chatrooms.each do |chatroom| %>
+        <%= link_to chatroom_path(chatroom) do %>
+          <div class="message-card">
+            <% if chatroom.order.buyer == current_user %>
+              <%= cl_image_tag chatroom.order.seller.photo.key, class: "avatar" %>
+              <%# <p class="message-nickname"><%= chatroom.order.seller.nickname %></p>
             <% else %>
-              <p class="message-text">Write a message to <%= chatroom.order.buyer == current_user ? chatroom.order.seller.nickname : chatroom.order.buyer.nickname %></p>
+              <%= cl_image_tag chatroom.order.buyer.photo.key, class: "avatar" %>
+              <%# <p class="message-nickname"><%= chatroom.order.buyer.nickname %></p>
             <% end %>
+
+            <div class="flex-grow-1">
+              <p class="message-item"><%= chatroom.order.desired_item.name %></p>
+              <div class="d-flex justify-content-between">
+                <% if chatroom.messages.present? %>
+                  <p class="message-text"><%= chatroom.messages.last.content.size > 20 ? "#{chatroom.messages.last.content.first(20)}..." : chatroom.messages.last.content %></p>
+                  <p class="message-time"><%= time_ago_in_words chatroom.messages.last.created_at %> ago</p>
+                <% else %>
+                  <p class="message-text">Write a message to <%= chatroom.order.buyer == current_user ? chatroom.order.seller.nickname : chatroom.order.buyer.nickname %></p>
+                <% end %>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
+    <% else %>
+      <h6>You don't have any messages yet!</h6>
     <% end %>
-  <% end %>
-<% else %>
-  <p>You don't have any messages yet!</p>
-<% end %>
+
+  </div>
+
+</div>
