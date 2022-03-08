@@ -1,6 +1,7 @@
 class ChatroomsController < ApplicationController
   def index
-    @orders = Order.where("buyer_id = ? OR seller_id = ? AND status = ?", current_user, current_user, 1)
+    @orders = Order.where("buyer_id = ? OR seller_id = ?", current_user, current_user).where(status: 1)
+
     @chatrooms = []
     @orders.each do |order|
       @chatrooms << order.chatroom
