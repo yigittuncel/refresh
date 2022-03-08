@@ -20,7 +20,7 @@
     <% if @user == current_user %>
 
       <div>
-        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill fw-bolder" %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"btn btn-warning rounded-pill fw-bolder sign-out" %>
       </div>
 
      <% end %>
