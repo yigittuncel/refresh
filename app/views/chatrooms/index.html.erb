@@ -3,7 +3,7 @@
 <% if @chatrooms.present? %>
   <% @chatrooms.each do |chatroom| %>
     <%= link_to chatroom_path(chatroom) do %>
-      <div class="border rounded p-1 my-3 d-flex text-decoration-none">
+      <div class="message-card">
         <div>
           <% if chatroom.order.buyer == current_user %>
             <%= cl_image_tag chatroom.order.seller.photo.key, class: "avatar" %>
