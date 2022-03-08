@@ -60,3 +60,13 @@
   }
 
 }
+
+fieldset{
+  display: flex;
+  overflow-x: auto;
+  margin: 1rem 0;
+
+  legend {
+    display: none;
+  }
+}
