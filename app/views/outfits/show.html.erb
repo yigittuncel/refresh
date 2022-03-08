@@ -10,11 +10,14 @@
      <div class="sidebar container sticky-top py-3">
 
         <h5 class="mb-3">Items in this outfit</h5>
-        <ul class="list-group pb-3">
+
+        <ul class="list-group pb-3 d-flex bg-transparent">
         <% @outfit.items.each do |item| %>
 
-          <li class="list-group-item border-0">
+          <li class="list-group-item border-0 bg-transparent">
+
              <%= render partial: "shared/item_card", locals: { item: item } %>
+
           </li>
 
         <% end %>
