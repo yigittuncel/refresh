@@ -1,28 +1,42 @@
-<% if current_user == @chatroom.order.buyer || current_user == @chatroom.order.seller %>
-  <div class="container chatroom"
-  data-controller="chatroom-subscription"
-  data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
-  >
-  <h5 class="mt-3">Your chat with <%= @chatroom.order.buyer == current_user ? @chatroom.order.seller.nickname : @chatroom.order.buyer.nickname %></h5>
+<div class="row mx-auto d-flex justify-content-center gx-4 ">
+  <div class="col-lg-8 col-sm-12">
+    <% if current_user == @chatroom.order.buyer || current_user == @chatroom.order.seller %>
+      <div class="container chatroom"
+      data-controller="chatroom-subscription"
+      data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
+      >
 
-  <div class="messages" data-chatroom-subscription-target="messages">
-    <% @chatroom.messages.each do |message| %>
-      <%= render partial: "messages/message", locals: {message: message, chatroom: @chatroom } %>
+      <div class="item-show d-flex justify-content-between align-items-center pb-2 mb-4">
+        <%= link_to chatrooms_path do %>
+          <i class="fas fa-chevron-left fa-lg"></i>
+        <% end %>
+        <h5 class="m-0">
+          Chat with <%= @chatroom.order.buyer == current_user ? @chatroom.order.seller.nickname : @chatroom.order.buyer.nickname %>
+        </h5>
+        <p class="m-0">✨</p>
+      </div>
+
+      <div class="messages" data-chatroom-subscription-target="messages">
+        <% @chatroom.messages.each do |message| %>
+          <%= render partial: "messages/message", locals: {message: message, chatroom: @chatroom } %>
+        <% end %>
+      </div>
+
+      <%= simple_form_for [@chatroom, @message],
+        remote: true,
+        html: {data: {chatroom_subscription_target: "form"}, class: "d-flex mt-4 message-form-container"} do |f|
+      %>
+      <%= f.input :content,
+          label: false,
+          placeholder: "Message ##{@chatroom.name}",
+          wrapper_html: {class: "flex-grow-1 form-message"}
+        %>
+        <%= f.submit "Send", class: "btn btn-primary px-4" %>
+      <% end %>
+    </div>
+    <% else %>
+      <h1>It seems like you are not either buyer or seller of this trades</h1>
     <% end %>
   </div>
 
-  <%= simple_form_for [@chatroom, @message],
-    remote: true,
-    html: {data: {chatroom_subscription_target: "form"}, class: "d-flex mt-4 message-form-container"} do |f|
-  %>
-   <%= f.input :content,
-      label: false,
-      placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1 form-message"}
-    %>
-    <%= f.submit "Send", class: "btn btn-primary px-4" %>
-  <% end %>
 </div>
-<% else %>
-  <h1>It seems like you are not either buyer or seller of this trades</h1>
-<% end %>
