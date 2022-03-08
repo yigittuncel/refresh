@@ -90,17 +90,17 @@
   <div class="modal-dialog modal-fullscreen-md-down">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Select your Item</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body text-center">
 
         <% if user_signed_in? %>
 
           <%= simple_form_for [@item, @order] do |f| %>
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
             <%= f.input :offered_item, label: false, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
-            <%= f.button :submit, class: "btn btn-primary fixed-bottom m-1" %>
+            <%= f.button :submit, class: "btn btn-action" %>
           <% end %>
 
         <% else %>

@@ -6,6 +6,7 @@
           <%= simple_form_for @outfit do |f| %>
             <%= f.input :description %>
             <%= f.input :photo, as: :file %>
+            <h6>select item(s)</h6>
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
             <%= f.input :items, as: :check_boxes, collection: collection,  label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true } %>
             <%= f.button :submit, class: "btn btn-action" %>
