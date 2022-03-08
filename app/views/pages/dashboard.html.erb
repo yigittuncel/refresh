@@ -1,4 +1,8 @@
-<div class="container">
+<div class="row mx-auto d-flex justify-content-center gx-4">
+
+  <div class="col-lg-6 col-md-6 col-sm-12">
+
+
 
   <div class="d-flex justify-content-between">
     <div class="user-info" >
@@ -19,17 +23,19 @@
   <div>
 
     <% if @user == current_user %>
-      <h3 class="dashboard-title mt-4">Your dashboard</h3>
+
+      <h4 class="py-3 mx-2 border-bottom border-secondary border-3 text-center">My dashboard</h4>
+
     <% end %>
 
-    <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
+    <ul class="nav nav-pills mt-4 justify-content-around" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="outfits-tab" data-bs-toggle="tab" data-bs-target="#outfits" type="button" role="tab" aria-controls="outfits" aria-selected="true">
+        <button class="btn-action nav-link active rounded-pill" id="outfits-tab" data-bs-toggle="tab" data-bs-target="#outfits" type="button" role="tab" aria-controls="outfits" aria-selected="true">
         Outfits
         </button>
       </li>
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="items-tab" data-bs-toggle="tab" data-bs-target="#items" type="button" role="tab" aria-controls="items" aria-selected="false">
+        <button class="btn-action nav-link rounded-pill" id="items-tab" data-bs-toggle="tab" data-bs-target="#items" type="button" role="tab" aria-controls="items" aria-selected="false">
         Items
         </button>
       </li>
@@ -41,10 +47,10 @@
       <div class="tab-pane fade show active my-4" id="outfits" role="tabpanel" aria-labelledby="outfits-tab">
         <div class="row">
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
-          <% if @outfits.empty? %>
+          <% if @outfits.empty? && @user == current_user%>
               <div class="m-3" style="height: 75vh">
                 <p >You don't have any outfits yet.</p>
-                <%= link_to "Create your first outfit", new_outfit_path, class: "btn btn-outline-info pill" %>
+                <%= link_to "Create your first outfit", new_outfit_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
               </div>
           <% else %>
           <div class="row gx-1">
@@ -65,10 +71,10 @@
       <div class="tab-pane fade my-4" id="items" role="tabpanel" aria-labelledby="items-tab">
         <div class="row">
           <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
-            <% if @items.empty? %>
+            <% if @items.empty? && @user == current_user%>
               <div>
                 <p class="m-3">You don't have any items yet</p>
-                <%= link_to "Create your first item", new_item_path, class: "btn btn-outline-info pill" %>
+                <%= link_to "Create your first item", new_item_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
               </div>
             <% else %>
               <div class="row gx-1">
@@ -88,5 +94,9 @@
       </div>
 
     </div>
+
   </div>
+
+</div>
+
 </div>

@@ -2,7 +2,7 @@
 
   <div class="col-lg-6 col-md-6 col-sm-12">
 
-    <h4 class="dashboard-title py-3 mx-2 border-bottom border-secondary border-3 text-center"><i class="fas fa-exchange-alt"></i> My trades</h4>
+    <h4 class="py-3 mx-2 border-bottom border-secondary border-3 text-center"><i class="fas fa-exchange-alt"></i> My trades</h4>
 
     <ul class="nav nav-pills mt-4 justify-content-around" id="myTab" role="tablist">
 
@@ -29,9 +29,9 @@
         <div class="row d-flex justify-content-center">
 
           <% if @sent_orders.empty? %>
-              <div class="m-3" style="height: 75vh">
+              <div class="m-3 text-center" style="height: 75vh">
                 <p>You haven't sent any trade offers yet. Why don't you try exploring your feed?</p>
-                <%= link_to "Explore cool outfits", new_outfit_path, class: "btn btn-outline-info pill" %>
+                <%= link_to "Explore cool outfits", new_outfit_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
               </div>
           <% else %>
             <div class="row ">
@@ -52,9 +52,9 @@
         <div class="row d-flex justify-content-center">
 
           <% if @received_orders.empty? %>
-              <div class="m-3" style="height: 75vh">
+              <div class="m-3 text-center" style="height: 75vh">
                 <p>You haven't received any trade offers yet. Why don't you try uploading a new outfit?</p>
-                <%= link_to "Post an outfit", new_outfit_path, class: "btn btn-outline-info pill" %>
+                <%= link_to "Post an outfit", new_outfit_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
               </div>
           <% else %>
             <div class="row">

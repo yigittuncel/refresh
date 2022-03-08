@@ -6,6 +6,10 @@
   }
 }
 
+.nav-link{
+  color: $ultrablue;
+}
+
 .nav-pills .nav-link{
   &:hover{
     background-color: $lightblue;
