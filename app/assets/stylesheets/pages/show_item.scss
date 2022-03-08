@@ -4,3 +4,59 @@
     width: 100px;
   }
 }
+
+.item-show {
+
+  border-bottom: 2px solid $yellow;
+
+  p {
+    font-size: 30px;
+  }
+
+  .fa-chevron-left {
+    color: $darkgrey;
+  }
+
+}
+
+
+
+.user-info-item {
+  font-size: .9rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $yellow;
+
+  p {
+    font-weight: bold;
+  }
+
+  .item-time {
+    font-weight: lighter;
+    color: $darkgrey;
+  }
+}
+
+
+.item-info {
+  padding-bottom: 1rem;
+  border-bottom: 2px solid $yellow;
+  margin-top: 1.5rem;
+  font-size: .9rem;
+
+  strong {
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  .item-info-title {
+    color: $darkblue;
+    font-weight: bold;
+  }
+
+  p {
+    margin-bottom: .5rem;
+    font-weight: lighter;
+    color: $darkgrey;
+  }
+
+}
