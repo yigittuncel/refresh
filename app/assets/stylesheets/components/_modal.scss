@@ -1,7 +1,7 @@
 @media (max-width:500px) {
 
   .modal-dialog {
-    height: 315px;
+    height: 300px;
     position:fixed;
     top:auto;
     right:auto;
@@ -17,4 +17,9 @@
     bottom: auto;
     border: none;
   }
+}
+
+.btn-close{
+  color: $darkblue;
+  opacity: 1;
 }

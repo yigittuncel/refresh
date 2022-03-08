@@ -1,21 +1,35 @@
- <div class="row d-flex justify-content-center p-0 m-0">
+ <div class="row d-flex justify-content-center p-0 m-0 mt-4">
+
   <div class="col-lg-5 col-md-6 col-sm-12 p-0">
     <%= render "shared/outfit_card", outfit: @outfit %>
   </div>
 
-  <div class="col-lg-3 col-md-3 col d-none d-sm-block p-0">
+  <% if @outfit.items.present? %>
+
+  <div class="col-lg-3 col-md-4 col d-none d-sm-block p-0">
+
      <div class="sidebar container sticky-top py-3">
 
-        <h5 class="mb-3">Items in this outfit</h5>
-        <ul class="list-group pb-3">
+        <h6 class="mb-3">Items in this outfit</h6>
+
+        <ul class="list-group pb-3 d-flex bg-transparent overflow-auto" style="height: 50vh">
+
         <% @outfit.items.each do |item| %>
 
-          <li class="list-group-item border-0">
+          <li class="list-group-item border-0 bg-transparent " >
+
              <%= render partial: "shared/item_card", locals: { item: item } %>
+
           </li>
 
         <% end %>
+
         </ul>
+
       </div>
+
   </div>
+
+  <% end %>
+
  </div>

@@ -1,6 +1,6 @@
 .img-item-card{
-  aspect-ratio: 3 / 4;
-  width: 100%;
+  width: 150px;
+  height: 150px;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -20,10 +20,10 @@
 }
 
 .card-item-img {
-  width: 100%;
-  height: 350px;
-  border-radius: 50px;
-  background-size: contain;
+  width: 150px;
+  height: 150px;
+  border-radius: 20px;
+  background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
