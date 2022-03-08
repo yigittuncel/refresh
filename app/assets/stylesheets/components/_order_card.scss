@@ -55,3 +55,15 @@
     opacity: 1;
   }
 }
+
+.order-status-confirmed{
+  border: 2px solid $lightyellow;
+}
+
+.order-status-rejected{
+  border: 2px solid $lightgrey;
+}
+
+.order-status-pending{
+ border: 2px solid $lightblue;
+}

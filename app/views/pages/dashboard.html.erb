@@ -47,20 +47,20 @@
                 <%= link_to "Create your first outfit", new_outfit_path, class: "btn btn-outline-info pill" %>
               </div>
           <% else %>
-          <div class="row">
+          <div class="row gx-1">
             <% @outfits.each do |outfit| %>
               <div class="col-4">
-                <%= link_to outfit_path(outfit) do %>
-                  <div style="height:200px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover">
-                  </div>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+                  <%= link_to outfit_path(outfit) do %>
+                    <div class="outfit-grid" style="background-image:url(<%= cl_image_path outfit.photo.key %>)">
+                    </div>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
           <% end %>
+            </div>
           </div>
         </div>
-      </div>
 
       <div class="tab-pane fade my-4" id="items" role="tabpanel" aria-labelledby="items-tab">
         <div class="row">
@@ -71,18 +71,17 @@
                 <%= link_to "Create your first item", new_item_path, class: "btn btn-outline-info pill" %>
               </div>
             <% else %>
-              <div class="row">
-                <% @items.each do |item| %>
-
+              <div class="row gx-1">
+                  <% @items.each do |item| %>
                     <div class="col-4">
                       <%= link_to item_path(item) do %>
-                        <div style="height:200px; background-image:url(<%= cl_image_path item.photo.key %>); background-size: cover">
+                        <div class="outfit-grid" style="background-image:url(<%= cl_image_path item.photo.key %>)">
                         </div>
-                        <p><%= item.name %></p>
+                        <p class="text-center"><%= item.name %></p>
                       <% end %>
                     </div>
-
-                <% end %>
+                  <% end %>
+              </div>
             <% end %>
           </div>
         </div>
