@@ -1,11 +1,18 @@
-<h1>Create Item</h1>
-
-<%= simple_form_for @item do |f| %>
-  <%= f.input :name, label: 'Your item name', error: 'item name is mandatory, please specify one' %>
-  <%= f.input :description %>
-  <%= f.input :brand %>
-  <%= f.input :size %>
-  <%= f.input :color %>
-  <%= f.input :photo, as: :file %>
-  <%= f.button :submit, class: "btn btn-action" %>
-<% end %>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="bg-white rounded p-3 shadow border $ultrablue">
+        <h1>Create new item</h1>
+        <%= simple_form_for @item do |f| %>
+          <%= f.input :name, label: 'Your item name', error: 'item name is mandatory, please specify one' %>
+          <%= f.input :description %>
+          <%= f.input :brand %>
+          <%= f.input :size %>
+          <%= f.input :color %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: "btn btn-action" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
