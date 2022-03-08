@@ -1,26 +1,20 @@
-<div class="container">
+<div class="row mx-auto d-flex justify-content-center gx-4">
 
-  <h1>h1. Bootstrap heading</h1>
-  <h2>h2. Bootstrap heading</h2>
-  <h3>h3. Bootstrap heading</h3>
-  <h4>h4. Bootstrap heading</h4>
-  <h5>h5. Bootstrap heading</h5>
-  <h6>h6. Bootstrap heading</h6>
+  <div class="col-lg-6 col-md-6 col-sm-12">
 
-  <div>
-    <h3 class="dashboard-title mt-4"><i class="fas fa-exchange-alt"></i> My trades</h3>
+    <h4 class="dashboard-title py-3 mx-2 border-bottom border-secondary border-3 text-center"><i class="fas fa-exchange-alt"></i> My trades</h4>
 
-    <ul class="nav nav-pills mt-4" id="myTab" role="tablist">
+    <ul class="nav nav-pills mt-4 justify-content-around" id="myTab" role="tablist">
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link active" id="sentOrders-tab" data-bs-toggle="tab"
+        <button class="btn-action nav-link active rounded-pill" id="sentOrders-tab" data-bs-toggle="tab"
                 data-bs-target="#sentOrders" type="button" role="tab" aria-controls="sentOrders" aria-selected="true">
         Sent
         </button>
       </li>
 
       <li class="nav-item" role="presentation">
-        <button class="nav-link" id="receivedOrders-tab" data-bs-toggle="tab"
+        <button class="btn-action nav-link rounded-pill" id="receivedOrders-tab" data-bs-toggle="tab"
                 data-bs-target="#receivedOrders" type="button" role="tab" aria-controls="receivedOrders" aria-selected="true">
         Received
         </button>
@@ -28,13 +22,12 @@
 
     </ul>
 
-    <div class="tab-content" id="myTabContent">
+    <div class="tab-content mt-2" id="myTabContent">
 
       <div class="tab-pane fade show active my-4" id="sentOrders" role="tabpanel" aria-labelledby="sentOrders-tab">
 
         <div class="row d-flex justify-content-center">
 
-          <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
           <% if @sent_orders.empty? %>
               <div class="m-3" style="height: 75vh">
                 <p>You haven't sent any trade offers yet. Why don't you try exploring your feed?</p>
@@ -49,7 +42,7 @@
               <% end %>
             </div>
           <% end %>
-          </div>
+
         </div>
 
       </div>
@@ -58,7 +51,6 @@
 
         <div class="row d-flex justify-content-center">
 
-          <div class="col-xl-6 col-lg-8 col-md-12" style="margin-bottom: 350px">
           <% if @received_orders.empty? %>
               <div class="m-3" style="height: 75vh">
                 <p>You haven't received any trade offers yet. Why don't you try uploading a new outfit?</p>
@@ -73,11 +65,12 @@
               <% end %>
             </div>
           <% end %>
-          </div>
         </div>
 
       </div>
 
     </div>
+
   </div>
+
 </div>
