@@ -42,13 +42,22 @@
         <p><%= @item.description %></p>
       </div>
 
-      <div class="item-info">
-        <p class="item-info-title">Item Details</p>
+      <% if (@item.brand.present? || @item.size.present?) || @item.color.present? %>
+        <div class="item-info">
+          <p class="item-info-title">Item Details</p>
+          <% if @item.brand.present? %>
+            <p><strong>Brand</strong><%= @item.brand %></p>
+          <% end %>
 
-        <p><strong>Brand</strong><%= @item.brand %></p>
-        <p><strong>Size</strong>  <%= @item.size %></p>
-        <p><strong>Colour</strong>  <%= @item.color %></p>
-      </div>
+          <% if @item.size.present? %>
+            <p><strong>Size</strong>  <%= @item.size %></p>
+          <% end %>
+
+          <% if @item.color.present? %>
+            <p><strong>Colour</strong>  <%= @item.color %></p>
+          <% end %>
+        </div>
+      <% end %>
 
 
       <!-- Button trigger modal -->
