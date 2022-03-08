@@ -1,7 +1,7 @@
 @media (max-width:500px) {
 
   .modal-dialog {
-    height: 350px;
+    height: 315px;
     position:fixed;
     top:auto;
     right:auto;
@@ -9,4 +9,12 @@
     bottom:0;
   }
 
+}
+
+#chooseSubmit{
+  .modal-dialog{
+    position: relative;
+    bottom: auto;
+    border: none;
+  }
 }

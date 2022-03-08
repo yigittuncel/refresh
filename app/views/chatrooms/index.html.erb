@@ -1,0 +1,28 @@
+<h2>Your message</h2>
+
+<% if @chatrooms.present? %>
+  <% @chatrooms.each do |chatroom| %>
+    <%= link_to chatroom_path(chatroom) do %>
+      <div class="border rounded p-1 my-3 d-flex text-decoration-none">
+        <div>
+          <% if chatroom.order.buyer == current_user %>
+            <%= cl_image_tag chatroom.order.seller.photo.key, class: "avatar" %>
+          <% else %>
+            <%= cl_image_tag chatroom.order.buyer.photo.key, class: "avatar" %>
+          <% end %>
+        </div>
+
+        <div class="ms-3">
+          <p class="m-0">Offered item: <%= chatroom.order.offered_item.name %></p>
+          <p class="m-0">Desired item: <%= chatroom.order.desired_item.name %></p>
+          <div class="d-flex justify-content-between">
+            <p class="text-decoration-none m-0"><em>Last message: <%= chatroom.messages.last.content %></em></p>
+            <p class="text-muted m-0">Sent <%= time_ago_in_words chatroom.messages.last.created_at  %> ago</p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% else %>
+
+<% end %>
