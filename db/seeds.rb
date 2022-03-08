@@ -1,5 +1,11 @@
 require "open-uri"
 
+Message.destroy_all
+puts "Previous messages deleted..."
+
+Chatroom.destroy_all
+puts "Previous chatrooms deleted..."
+
 Order.destroy_all
 puts "Previous orders deleted..."
 
