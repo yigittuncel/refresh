@@ -1,9 +1,11 @@
 <div class="card position-relative mb-4 p-0 border-0 bg-transparent">
 
-  <div class="btn btn-secondary card-outfit-item-count btn-item-count rounded-pill position-absolute"
-  data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
-    <%= outfit.items.count %> <i class="fas fa-tshirt"></i>
-  </div>
+  <% if outfit.items.present? %>
+    <div class="btn btn-secondary card-outfit-item-count btn-item-count rounded-pill position-absolute"
+    data-bs-toggle="modal" data-bs-target="#outfit<%= outfit.id %>Modal" >
+      <%= outfit.items.count %> <i class="fas fa-tshirt"></i>
+    </div>
+  <% end %>
 
   <div class="card-outfit-img"
        style="background-image:url(<%= cl_image_path outfit.photo.key %>)"
