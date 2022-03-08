@@ -1,0 +1,38 @@
+.messages {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-box {
+  padding: .5rem;
+  margin: .5rem;
+  width: max-content;
+  display: flex;
+}
+
+.message-box.my-message {
+  background-color: $lightpurple;
+  border-radius: 1rem 0 1rem 1rem;
+  align-self: end;
+}
+
+.message-box.other-message {
+  background-color: $white;
+  border-radius: 0 1rem 1rem 1rem;
+  align-self: start;
+}
+
+.message-box-text, .message-box-time {
+  font-weight: lighter;
+  color: $black;
+  margin-bottom: 0;
+}
+
+.message-box-text {
+  font-size: .9rem;
+  margin-right: 1rem;
+}
+.message-box-time {
+  font-size: .8rem;
+  padding-right: .75rem;
+}

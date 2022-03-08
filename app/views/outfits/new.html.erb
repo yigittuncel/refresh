@@ -1,9 +1,16 @@
-<h1>Create Outfit</h1>
-
-<%= simple_form_for @outfit do |f| %>
-  <%= f.input :description %>
-  <%= f.input :photo, as: :file %>
-  <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
-  <%= f.input :items, as: :check_boxes, collection: collection,  label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true } %>
-  <%= f.button :submit, class: "btn btn-action" %>
-<% end %>
+<div class="container py-5">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-lg-3">
+      <div class="form-login">
+        <h1>Create new outfit</h1>
+          <%= simple_form_for @outfit do |f| %>
+            <%= f.input :description %>
+            <%= f.input :photo, as: :file %>
+            <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
+            <%= f.input :items, as: :check_boxes, collection: collection,  label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true } %>
+            <%= f.button :submit, class: "btn btn-action" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+</div>

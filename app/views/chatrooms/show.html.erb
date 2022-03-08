@@ -3,7 +3,7 @@
   data-controller="chatroom-subscription"
   data-chatroom-subscription-chatroom-id-value="<%= @chatroom.id %>"
   >
-  <h1>#helloooooooo</h1>
+  <h5 class="mt-3">Your chat with <%= @chatroom.order.buyer == current_user ? @chatroom.order.seller.nickname : @chatroom.order.buyer.nickname %></h5>
 
   <div class="messages" data-chatroom-subscription-target="messages">
     <% @chatroom.messages.each do |message| %>
@@ -13,14 +13,14 @@
 
   <%= simple_form_for [@chatroom, @message],
     remote: true,
-    html: {data: {chatroom_subscription_target: "form"}, class: "d-flex"} do |f|
+    html: {data: {chatroom_subscription_target: "form"}, class: "d-flex mt-4 message-form-container"} do |f|
   %>
    <%= f.input :content,
       label: false,
       placeholder: "Message ##{@chatroom.name}",
-      wrapper_html: {class: "flex-grow-1"}
+      wrapper_html: {class: "flex-grow-1 form-message"}
     %>
-    <%= f.submit "Send", class: "btn btn-primary" %>
+    <%= f.submit "Send", class: "btn btn-primary px-4" %>
   <% end %>
 </div>
 <% else %>

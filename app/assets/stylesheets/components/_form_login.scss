@@ -26,6 +26,13 @@
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   }
 
+  .form-control {
+    &:focus{
+      background-color: white;
+    }
+  }
+
+
   h2 {
     font-size: 25px;
     font-weight: bold;
