@@ -49,9 +49,9 @@
           <% else %>
           <div class="row">
             <% @outfits.each do |outfit| %>
-              <div class="col-12 col-lg-4">
+              <div class="col-4">
                   <%= link_to outfit_path(outfit) do %>
-                    <div style="height:200px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover; background-position: center">
+                    <div class="outfit-grid" style="background-image:url(<%= cl_image_path outfit.photo.key %>)">
                     </div>
                   <% end %>
                 </div>
