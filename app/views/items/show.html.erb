@@ -16,28 +16,12 @@
       </div>
 
 
-
-      <div class="card-item-img mb-4"
+      <div class="img-item-showpage mb-4"
        style="background-image:url(<%= cl_image_path @item.photo.key %>)">
+       <p class="text-align-right rounded-pill badge bg-primary">Posted <%= time_ago_in_words @item.created_at %> ago</p>
       </div>
 
-
-      <%= link_to dashboard_path(@item.user) do %>
-
-        <div class="user-info-item d-flex align-items-center mt-2">
-
-          <div>
-            <%= cl_image_tag @item.user.photo.key, class:"avatar me-3 border-yellow" %>
-          </div>
-          <div class="d-flex flex-column">
-            <p class="d-inline m-0"><%= @item.user.nickname %></p>
-            <p class="d-inline m-0 item-time"><%= @item.created_at.strftime(" %A, %w %b") %></p>
-          </div>
-
-        </div>
-
-      <% end %>
-
+      <%= render partial: "shared/user_info", locals: { user: @item.user } %>
 
       <div class="item-info">
         <p class="item-info-title">Description</p>
@@ -113,7 +97,7 @@
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
             <%= f.input :offered_item, label: false, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
             <div class="d-grid gap-2">
-              <%= f.button :submit, class: "btn btn-action" %>
+              <%= f.submit "Make an offer", class: "btn btn-action" %>
             </div>
           <% end %>
 
