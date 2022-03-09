@@ -1,8 +1,9 @@
 .img-item-showpage {
-  height: 60vh;
+  aspect-ratio: 1;
   width: 100%;
   background-size: contain;
   background-repeat: no-repeat;
+  background-position: center;
 }
 
 // Items in the trades
