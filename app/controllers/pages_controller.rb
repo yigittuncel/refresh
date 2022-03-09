@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   def feed
     @outfits = Outfit.all.order('created_at DESC')
     @users = User.all
+    if user_signed_in?
+      @people_you_may_like = User.where("id != ?", current_user.id)
+    else
+      @people_you_may_like = User.first(4)
+    end
   end
 
   def dashboard
