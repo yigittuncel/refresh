@@ -1,4 +1,6 @@
-<div id="message-<%= message.id %>" class="message-box <%= message.user == current_user ? "my-message" : "other-message" %>" >
-  <p class="message-box-text"><%= message.content %></p>
-  <i class="message-box-time"><%= message.created_at.strftime("%l:%M") %></i>
+<div class="cont-<%= message.user.id %>">
+  <div id="message-<%= message.id %>-<%= message.user.id %>" class="message-box msg-<%= message.user.id %>" >
+    <p class="message-box-text"><%= message.content %></p>
+    <i class="message-box-time"><%= message.created_at.strftime("%l:%M") %></i>
+  </div>
 </div>
