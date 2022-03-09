@@ -1,5 +1,4 @@
 meta_product_name: "Refresh"
-meta_title: "Refresh - create, show and trade your style"
-meta_description: "Fashion App for trading second hand clothes."
-#meta_image: "logo.png" # should exist in `app/assets/images/`
-#twitter_account: "@product_twitter_account"   # required for Twitter Cards
+meta_title: "Refresh - Show, share and trade in style"
+meta_description: "Show your favourite outfits and share your own style with the world. Trade clothes and make new friends!"
+meta_image: "ogimage.png"
