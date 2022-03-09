@@ -30,6 +30,19 @@
     <%= csp_meta_tag %>
 
     <%= favicon_link_tag asset_path('favicon.ico') %>
+
+    <style>
+
+      <%= ".msg-#{current_user&.id}" %> {
+      background-color: #ADB8FF !important;
+      border-radius: 1rem 0 1rem 1rem !important;
+      }
+      <%= ".cont-#{current_user&.id}" %> {
+      display: flex;
+      justify-content: flex-end
+      }
+    </style>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
