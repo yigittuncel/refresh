@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
     @item = Item.new(params_item)
     @item.user = current_user
     if @item.save
-      redirect_to :root
+      redirect_to dashboard_path(current_user)
     else
       render :new
     end
