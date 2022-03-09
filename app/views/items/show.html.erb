@@ -1,9 +1,9 @@
 <% content_for :meta_title, "#{@item.name} is on #{DEFAULT_META["meta_product_name"]}" %>
 <% content_for :meta_description, @item.description %>
-<% content_for :meta_image, cl_image_path(@item.photo.path) %>
+<% content_for :meta_image, cl_image_path(@item.photo.key) %>
 
 <div class="container">
-  <div class="row d-flex justify-content-center p-0 m-0 pb-5">
+  <div class="row d-flex justify-content-center p-0 m-0 pb-5 mt-2">
 
     <div class="col-lg-5 col-md-6 col-sm-12 p-0">
 
@@ -11,7 +11,7 @@
         <%= link_to root_path do %>
           <i class="fas fa-chevron-left fa-lg"></i>
         <% end %>
-        <h2 class="m-0"><%= @item.name %></h2>
+        <h4 class="m-0"><%= @item.name %></h2>
         <p class="m-0">✨</p>
       </div>
 
@@ -79,7 +79,7 @@
         <ul class="list-group pb-3">
         <% @item.outfits.each do |outfit|  %>
 
-          <li class="list-group-item border-0">
+          <li class="list-group-item border-0 bg-transparent">
             <%= link_to outfit_path(outfit) do %>
               <div style="height:300px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover">
               </div>
