@@ -1,3 +1,6 @@
+<% content_for :meta_title, "#{@item.name} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @item.description %>
+<% content_for :meta_image, cl_image_path(@item.photo.path) %>
 
 <div class="container">
   <div class="row d-flex justify-content-center p-0 m-0">

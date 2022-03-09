@@ -17,10 +17,17 @@
 }
 
 .submit-button{
-  top: 35px;
+  top: 28px;
   z-index: 20;
   .btn{
     font-weight: bold;
     color: $darkblue;
   }
+}
+
+.navbar-logo{
+  background-image: url("https://res.cloudinary.com/mariorzgz/image/upload/v1646824926/Logo_Light.svg");
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 33%;
 }
