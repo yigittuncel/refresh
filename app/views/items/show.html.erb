@@ -3,7 +3,7 @@
 <% content_for :meta_image, cl_image_path(@item.photo.key) %>
 
 <div class="container">
-  <div class="row d-flex justify-content-center p-0 m-0">
+  <div class="row d-flex justify-content-center p-0 m-0 pb-5 mt-2">
 
     <div class="col-lg-5 col-md-6 col-sm-12 p-0">
 
@@ -11,33 +11,17 @@
         <%= link_to root_path do %>
           <i class="fas fa-chevron-left fa-lg"></i>
         <% end %>
-        <h2 class="m-0"><%= @item.name %></h2>
+        <h4 class="m-0"><%= @item.name %></h2>
         <p class="m-0">✨</p>
       </div>
 
 
-
-      <div class="card-item-img mb-4"
+      <div class="img-item-showpage mb-4"
        style="background-image:url(<%= cl_image_path @item.photo.key %>)">
+       <p class="text-align-right rounded-pill badge bg-primary">Posted <%= time_ago_in_words @item.created_at %> ago</p>
       </div>
 
-
-      <%= link_to dashboard_path(@item.user) do %>
-
-        <div class="user-info-item d-flex align-items-center mt-2">
-
-          <div>
-            <%= cl_image_tag @item.user.photo.key, class:"avatar me-3 border-yellow" %>
-          </div>
-          <div class="d-flex flex-column">
-            <p class="d-inline m-0"><%= @item.user.nickname %></p>
-            <p class="d-inline m-0 item-time"><%= @item.created_at.strftime(" %A, %w %b") %></p>
-          </div>
-
-        </div>
-
-      <% end %>
-
+      <%= render partial: "shared/user_info", locals: { user: @item.user } %>
 
       <div class="item-info">
         <p class="item-info-title">Description</p>
@@ -65,21 +49,21 @@
 
       <!-- Button trigger modal -->
       <div class="d-grid gap-2 col-6 my-4 mx-auto">
-        <button type="button" class="btn btn-action text-center" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <button type="button" class="btn btn-action text-center fixed-bottom" data-bs-toggle="modal" data-bs-target="#exampleModal">
           Make an offer
         </button>
       </div>
 
     </div>
 
-    <div class="col-lg-3 col-md-3 col p-0">
+    <div class="col-lg-6 col-md-6 col-sm-12 p-0">
      <div class="sidebar container sticky-top">
 
         <h5>Outfits this item appears</h5>
         <ul class="list-group pb-3">
         <% @item.outfits.each do |outfit|  %>
 
-          <li class="list-group-item border-0">
+          <li class="list-group-item border-0 bg-transparent">
             <%= link_to outfit_path(outfit) do %>
               <div style="height:300px; background-image:url(<%= cl_image_path outfit.photo.key %>); background-size: cover">
               </div>
@@ -101,7 +85,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-fullscreen-md-down modal-items">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header border-0">
         <h6 class="modal-title" id="exampleModalLabel">Select your Item</h6>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -113,7 +97,7 @@
             <% collection =  current_user.items.map { |item| [item.id, cl_image_tag(item.photo.key) ] }%>
             <%= f.input :offered_item, label: false, as: :radio_buttons, collection: collection, label_method: :second, value_method: :first, include_hidden: false, input_html: { multiple: true, required: true } %>
             <div class="d-grid gap-2">
-              <%= f.button :submit, class: "btn btn-action" %>
+              <%= f.submit "Make an offer", class: "btn btn-action" %>
             </div>
           <% end %>
 
