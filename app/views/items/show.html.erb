@@ -8,7 +8,7 @@
     <div class="col-lg-5 col-md-6 col-sm-12 p-0">
 
       <div class="item-show d-flex justify-content-between align-items-center pb-2 mb-4">
-        <%= link_to root_path do %>
+        <%= link_to :back do %>
           <i class="fas fa-chevron-left fa-lg"></i>
         <% end %>
         <h4 class="m-0 text-center"><%= @item.name %></h2>
@@ -46,6 +46,7 @@
         </div>
       <% end %>
 
+      <% unless @item.user == current_user %>
 
       <!-- Button trigger modal -->
       <div class="gap-2 col-6 my-4 mx-auto">
@@ -55,6 +56,8 @@
           Make an offer
         </button>
       </div>
+
+      <% end %>
 
     </div>
 
