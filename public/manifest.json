@@ -2,7 +2,7 @@
   "name": "Refresh",
    "background_color": "#FFF5D6",
    "description": "Show your favourite outfits and share your own style with the world. Trade clothes and make new friends!",
-   "display": "minimal-ui",
+   "display": "standalone",
 
   "icons": [
    {
