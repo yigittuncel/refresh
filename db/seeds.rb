@@ -282,82 +282,6 @@ puts "Outfit with tagged items created"
 
 # Here ends user Vanessa
 
-
-# Here starts user Tara
-
-tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
-
-tara = User.new(
-  email: "tara@tara.com",
-  password: "tara@tara.com",
-  nickname: "Tara"
-)
-
-tara.photo.attach(io: tara_photo, filename: tara.email, content_type: 'image/png')
-tara.save!
-puts "User Tara has been created"
-
-tara_items = Array.new(1)
-tara_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/710f3aa0ad5397278e2d4e4861086bc8.jpg?quality=75&height=534&width=400"
-]
-
-tara_item_names = ["Jeans 'Penelope'"]
-tara_item_descriptions = [
-  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
-]
-
-tara_item_brands = ["Guido Mario Kretschmer"]
-tara_item_sizes = ["M"]
-tara_item_colors = ["denim blue"]
-
-tara_items.each_with_index do |i, index|
-  item = Item.new(
-    name: tara_item_names[index],
-    description: tara_item_descriptions[index],
-    brand: tara_item_brands[index],
-    size: tara_item_sizes[index],
-    color: tara_item_colors[index]
-  )
-
-  tara_item_photo = URI.open(tara_item_photos[index])
-  item.photo.attach(io: tara_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Tara"
-  item.save!
-  puts "Item #{item.name} created!"
-end
-
-tara_outfits = Array.new(1)
-tara_outfit_descriptions = [
-  "Enjoying the first sunny days of spring."
-]
-tara_outfit_photos = [
-  "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
-]
-
-tara_outfits.each_with_index do |o, index|
-  outfit = Outfit.new(
-    description: tara_outfit_descriptions[index]
-  )
-  outfit_photo = URI.open(tara_outfit_photos[index])
-  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Tara"
-  outfit.save!
-  puts "Outfit created"
-end
-
-tara_outfits = Outfit.where("user_id = ?", User.last.id)
-tara_items = Item.where("user_id = ?", User.last.id)
-
-ItemOutfit.create!(
-  outfit: tara_outfits.first,
-  item: tara_items.first
-)
-
-puts "Outfit with tagged items created"
-
-# Here ends user Tara
-
 # Here starts user Louis
 
 louis_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40ed0bbb7626f89f7a.jpg")
@@ -438,6 +362,81 @@ ItemOutfit.create!(
 puts "Outfit with tagged items created"
 
 # Here ends user Louis
+
+# Here starts user Tara
+
+tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
+
+tara = User.new(
+  email: "tara@tara.com",
+  password: "tara@tara.com",
+  nickname: "Tara"
+)
+
+tara.photo.attach(io: tara_photo, filename: tara.email, content_type: 'image/png')
+tara.save!
+puts "User Tara has been created"
+
+tara_items = Array.new(1)
+tara_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/710f3aa0ad5397278e2d4e4861086bc8.jpg?quality=75&height=534&width=400"
+]
+
+tara_item_names = ["Jeans 'Penelope'"]
+tara_item_descriptions = [
+  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
+]
+
+tara_item_brands = ["Guido Mario Kretschmer"]
+tara_item_sizes = ["M"]
+tara_item_colors = ["denim blue"]
+
+tara_items.each_with_index do |i, index|
+  item = Item.new(
+    name: tara_item_names[index],
+    description: tara_item_descriptions[index],
+    brand: tara_item_brands[index],
+    size: tara_item_sizes[index],
+    color: tara_item_colors[index]
+  )
+
+  tara_item_photo = URI.open(tara_item_photos[index])
+  item.photo.attach(io: tara_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Tara"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+tara_outfits = Array.new(1)
+tara_outfit_descriptions = [
+  "Enjoying the first sunny days of spring."
+]
+tara_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
+]
+
+tara_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: tara_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(tara_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Tara"
+  outfit.save!
+  puts "Outfit created"
+end
+
+tara_outfits = Outfit.where("user_id = ?", User.last.id)
+tara_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: tara_outfits.first,
+  item: tara_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Tara
 
 # Here starts user Riccardo
 
