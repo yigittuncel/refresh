@@ -31,7 +31,7 @@
           <% if @sent_orders.empty? %>
               <div class="m-3 text-center" style="height: 75vh">
                 <p>You haven't sent any trade offers yet. Why don't you try exploring your feed?</p>
-                <%= link_to "Explore cool outfits", new_outfit_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
+                <%= link_to "Explore cool outfits", root_path, class: "btn btn-outline-secondary rounded-pill fw-bolder" %>
               </div>
           <% else %>
             <div class="row ">
