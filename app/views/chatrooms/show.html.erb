@@ -5,9 +5,13 @@
       <%= link_to chatrooms_path do %>
         <i class="fas fa-chevron-left fa-lg"></i>
       <% end %>
-      <h5 class="m-0 text-center">
-        Chat with <%= @chatroom.order.buyer == current_user ? @chatroom.order.seller.nickname : @chatroom.order.buyer.nickname %>
-      </h5>
+
+      <% if @chatroom.order.buyer == current_user %>
+        <%= render partial: "shared/user_info", locals: { user: @chatroom.order.seller } %>
+      <% else %>
+        <%= render partial: "shared/user_info", locals: { user: @chatroom.order.buyer } %>
+      <% end %>
+
       <p class="m-0">✨</p>
     </div>
 
