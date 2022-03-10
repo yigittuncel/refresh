@@ -104,7 +104,158 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
-# Here starts the second user
+# Here starts user Vanessa
+
+vanessa_photo = URI.open("https://lthumb.lisimg.com/271/24355271.jpg?width=280&sharpen=true")
+
+vanessa = User.new(
+  email: "vanessa@vanessa.com",
+  password: "vanessa@vanessa.com",
+  nickname: "Vanessa"
+)
+
+vanessa.photo.attach(io: vanessa_photo, filename: vanessa.email, content_type: 'image/png')
+vanessa.save!
+puts "User Vanessa has been created"
+
+vanessa_items = Array.new(1)
+vanessa_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/63f76b10faf2f5e6454474802db6b212.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
+]
+
+vanessa_item_names = ["Shirt 'Roman'"]
+vanessa_item_descriptions = [
+  "White oversize shirt, plain colored and out of jersey"
+]
+
+vanessa_item_brands = ["About You"]
+vanessa_item_sizes = ["XS"]
+vanessa_item_colors = ["white"]
+
+vanessa_items.each_with_index do |i, index|
+  item = Item.new(
+    name: vanessa_item_names[index],
+    description: vanessa_item_descriptions[index],
+    brand: vanessa_item_brands[index],
+    size: vanessa_item_sizes[index],
+    color: vanessa_item_colors[index]
+  )
+
+  vanessa_item_photo = URI.open(vanessa_item_photos[index])
+  item.photo.attach(io: vanessa_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Vanessa"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+vanessa_outfits = Array.new(1)
+vanessa_outfit_descriptions = [
+  "Love oversize."
+]
+vanessa_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/e060a702fb296bcc1f8ef712caae753b.jpg?quality=75&height=800&width=600"
+]
+
+vanessa_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: vanessa_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(vanessa_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Vanessa"
+  outfit.save!
+  puts "Outfit created"
+end
+
+vanessa_outfits = Outfit.where("user_id = ?", User.last.id)
+vanessa_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: vanessa_outfits.first,
+  item: vanessa_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Vanessa
+
+
+# Here starts user Tara
+
+tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
+
+tara = User.new(
+  email: "tara@tara.com",
+  password: "tara@tara.com",
+  nickname: "Tara"
+)
+
+tara.photo.attach(io: tara_photo, filename: tara.email, content_type: 'image/png')
+tara.save!
+puts "User Tara has been created"
+
+tara_items = Array.new(1)
+tara_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/710f3aa0ad5397278e2d4e4861086bc8.jpg?quality=75&height=534&width=400"
+]
+
+tara_item_names = ["Jeans 'Penelope'"]
+tara_item_descriptions = [
+  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
+]
+
+tara_item_brands = ["Guido Mario Kretschmer"]
+tara_item_sizes = ["M"]
+tara_item_colors = ["denim blue"]
+
+tara_items.each_with_index do |i, index|
+  item = Item.new(
+    name: tara_item_names[index],
+    description: tara_item_descriptions[index],
+    brand: tara_item_brands[index],
+    size: tara_item_sizes[index],
+    color: tara_item_colors[index]
+  )
+
+  tara_item_photo = URI.open(tara_item_photos[index])
+  item.photo.attach(io: tara_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Tara"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+tara_outfits = Array.new(1)
+tara_outfit_descriptions = [
+  "Enjoying the first sunny days of spring."
+]
+tara_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
+]
+
+tara_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: tara_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(tara_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Tara"
+  outfit.save!
+  puts "Outfit created"
+end
+
+tara_outfits = Outfit.where("user_id = ?", User.last.id)
+tara_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: tara_outfits.first,
+  item: tara_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Tara
+
+# Here starts user Louis
 
 louis_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40ed0bbb7626f89f7a.jpg")
 
@@ -183,7 +334,9 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
-# Here starts the third user
+# Here ends user Louis
+
+# Here starts user Riccardo
 
 riccardo_photo = URI.open("https://www.wuv.de/var/wuv/storage/images/werben_verkaufen/marketing/ich_wollte_mich_nie_nur_auf_das_medium_blog_reduzieren_lassen/9623953-5-ger-DE/ich_wollte_mich_nie_nur_auf_das_medium_blog_reduzieren_lassen7_gross.jpg")
 
@@ -255,7 +408,293 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
-# Here starts the fourth user
+#Ends user Riccardo
+
+# Here starts user Joel
+
+joel_photo = URI.open("https://im.vsco.co/aws-us-west-2/34a33d/106701978/5cbf76c179a80d1e1fb24039/vsco5cbf76c4c34b3.jpg?w=412&dpr=2.625")
+
+joel = User.new(
+  email: "joel@joel.com",
+  password: "joel@joel.com",
+  nickname: "Joel"
+)
+
+joel.photo.attach(io: joel_photo, filename: joel.email, content_type: 'image/png')
+joel.save!
+puts "User Joel has been created"
+
+joel_items = Array.new(1)
+joel_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/8ae5fe6d68e8e8a936b81a01c3385522.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
+]
+joel_item_names = ["T-Shirt Trust Fear"]
+joel_item_descriptions = [
+  "Very cool shirt, 100% cotton. Normal length and normal fit. "
+]
+
+joel_item_brands = ["About You Unlimited"]
+joel_item_sizes = ["M"]
+joel_item_colors = ["black"]
+
+joel_items.each_with_index do |i, index|
+  item = Item.new(
+    name: joel_item_names[index],
+    description: joel_item_descriptions[index],
+    brand: joel_item_brands[index],
+    size: joel_item_sizes[index],
+    color: joel_item_colors[index]
+  )
+
+  joel_item_photo = URI.open(joel_item_photos[index])
+  item.photo.attach(io: joel_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Joel"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+joel_outfits = Array.new(1)
+joel_outfit_descriptions = [
+  "Stylish and cool - you can wear it for a lazy Sunday afternoon and also for going out in the evening to your favourite bar."
+]
+joel_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/029347f97db504f912bb90449cfc5486.jpg?quality=75&height=534&width=400"
+]
+
+joel_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: joel_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(joel_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Joel"
+  outfit.save!
+  puts "Outfit created"
+end
+
+joel_outfits = Outfit.where("user_id = ?", User.last.id)
+joel_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: joel_outfits.first,
+  item: joel_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Joel
+
+# Here starts user Christina
+
+christina_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1641542998/upgrit4bif7ab8enrywz.jpg")
+
+christina = User.new(
+  email: "christina@christina.com",
+  password: "christina@christina.com",
+  nickname: "Christina"
+)
+
+christina.photo.attach(io: christina_photo, filename: christina.email, content_type: 'image/png')
+christina.save!
+puts "User Christina has been created"
+
+christina_items = Array.new(1)
+christina_item_photos = [
+  "https://www.brille-kaulard.de/media/image/78264.jpg"
+
+]
+christina_item_names = ["Ray Ban sunglasses"]
+christina_item_descriptions = [
+  "Ray Ban Wayfarer"
+]
+
+christina_item_brands = ["Ray Ban"]
+christina_item_sizes = ["none"]
+christina_item_colors = ["black"]
+
+christina_items.each_with_index do |i, index|
+  item = Item.new(
+    name: christina_item_names[index],
+    description: christina_item_descriptions[index],
+    brand: christina_item_brands[index],
+    size: christina_item_sizes[index],
+    color: christina_item_colors[index]
+  )
+
+  christina_item_photo = URI.open(christina_item_photos[index])
+  item.photo.attach(io: christina_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Christina"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+christina_outfits = Array.new(2)
+christina_outfit_descriptions = [
+  "Having a cocktail at Rodeo Drive in Miami Beach ✨",
+  "Nice summer day on the beach."
+]
+christina_outfit_photos = [
+  "https://res.cloudinary.com/mariorzgz/image/upload/v1646907577/21ee1047-1064-458c-9872-c4ca954f6471_ft0sue.jpg",
+  "https://res.cloudinary.com/mariorzgz/image/upload/v1646907596/IMG_1187_q92wom.jpg"
+]
+
+christina_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: christina_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(christina_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Christina"
+  outfit.save!
+  puts "Outfit created"
+end
+
+christina_outfits = Outfit.where("user_id = ?", User.last.id)
+christina_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: christina_outfits.first,
+  item: christina_items.first
+)
+
+# Here ends user Christina
+
+# Here starts user Yigit
+
+yigit_photo = URI.open("https://res.cloudinary.com/mariorzgz/image/upload/v1646905514/yigit_avatar.jpg")
+
+yigit = User.new(
+  email: "yigit@yigit.com",
+  password: "yigit@yigit.com",
+  nickname: "Yigit"
+)
+
+yigit.photo.attach(io: yigit_photo, filename: yigit.email, content_type: 'image/png')
+yigit.save!
+puts "User Yigit has been created"
+
+yigit_outfits = Array.new(1)
+yigit_outfit_descriptions = [
+  "Enjoying the Austrian mountains in my favourite shirt"
+]
+yigit_outfit_photos = [
+  "https://res.cloudinary.com/mariorzgz/image/upload/v1646905514/yigit_outfit.jpg"
+]
+
+yigit_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: yigit_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(yigit_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Yigit"
+  outfit.save!
+  puts "Outfit created"
+end
+
+yigit_outfits = Outfit.where("user_id = ?", User.last.id)
+
+# Here ends user Yigit
+
+
+# Here starts user Mario
+
+  mario_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643622347/ekjbgb0bi3ac6zg3nn1t.jpg")
+
+  mario = User.new(
+    email: "mario@mario.com",
+    password: "mario@mario.com",
+    nickname: "mariorzgz"
+  )
+
+  mario.photo.attach(io: mario_photo, filename: mario.email, content_type: 'image/png')
+  mario.save!
+  puts "User mario has been created"
+
+  mario_items = Array.new(3)
+  mario_item_photos = [
+    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/jacket_v1tu1c.jpg",
+    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/body_bad_gyal_jsbzut.jpg",
+    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/buffalo_z4svwx.jpg"
+
+  ]
+  mario_item_names = ["Fax fur jacket", "Bad Byal x Bershka bodysuit", "Buffalo Sneakers"]
+  mario_item_descriptions = [
+    "Faux fur jacket, bought it second handed already. It's super cozy and perfect for the winter",
+    "Used only twice. This is the body from the Bad Byal collection from Bershka. Really nice for parties",
+    "Barely used white buffalos. I need to get rid of them because they don't fit me. I accept some other buffalo in size 39 or 40"
+  ]
+
+  mario_item_brands = ["", "Bershka", "Buffalo"]
+  mario_item_sizes = ["M", "M", "38"]
+  mario_item_colors = ["brown", "pink", "white"]
+
+  mario_items.each_with_index do |i, index|
+    item = Item.new(
+      name: mario_item_names[index],
+      description: mario_item_descriptions[index],
+      brand: mario_item_brands[index],
+      size: mario_item_sizes[index],
+      color: mario_item_colors[index]
+    )
+
+    mario_item_photo = URI.open(mario_item_photos[index])
+    item.photo.attach(io: mario_item_photo, filename: item.name, content_type: 'image/png')
+    item.user = User.find_by nickname: "mariorzgz"
+    item.save!
+    puts "Item #{item.name} created!"
+  end
+
+  mario_outfits = Array.new(2)
+  mario_outfit_descriptions = [
+    "Wearing the body from bershka for the first time ✨",
+    "Love spring weather ✨"
+  ]
+  mario_outfit_photos = [
+    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/outfit_with_body_ykmiqp.jpg",
+    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400949/outfit_without_items_lgieud.jpg"
+  ]
+
+  mario_outfits.each_with_index do |o, index|
+    outfit = Outfit.new(
+      description: mario_outfit_descriptions[index]
+    )
+    outfit_photo = URI.open(mario_outfit_photos[index])
+    outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+    outfit.user = User.find_by nickname: "mariorzgz"
+    outfit.save!
+    puts "Outfit created"
+  end
+
+  mario_outfits = Outfit.where("user_id = ?", User.last.id)
+  mario_items = Item.where("user_id = ?", User.last.id)
+
+  ItemOutfit.create!(
+    outfit: mario_outfits.first,
+    item: mario_items.second
+  )
+
+  Order.create!(
+    buyer: User.find_by(nickname: 'Jaqueline'),
+    offered_item: User.find_by(nickname: 'Jaqueline').items.third,
+    seller: User.find_by(nickname: 'mariorzgz'),
+    desired_item: User.find_by(nickname: 'mariorzgz').items.last
+  )
+
+  puts "First order created"
+
+  Order.create!(
+    buyer: User.find_by(nickname: 'Jaqueline'),
+    offered_item: User.find_by(nickname: 'Jaqueline').items.second,
+    seller: User.find_by(nickname: 'mariorzgz'),
+    desired_item: User.find_by(nickname: 'mariorzgz').items.second
+  )
+
+  puts "Second order created"
+
+# Ends User Mario
+
+#Starts with user Lena
 
 lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-gercke.jpg")
 
@@ -357,100 +796,3 @@ ItemOutfit.create!(
 )
 
 puts "Outfit with tagged items created"
-
-# Starts User Mario
-
-  mario_photo = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1643622347/ekjbgb0bi3ac6zg3nn1t.jpg")
-
-  mario = User.new(
-    email: "mario@mario.com",
-    password: "mario@mario.com",
-    nickname: "mariorzgz"
-  )
-
-  mario.photo.attach(io: mario_photo, filename: mario.email, content_type: 'image/png')
-  mario.save!
-  puts "User mario has been created"
-
-  mario_items = Array.new(3)
-  mario_item_photos = [
-    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/jacket_v1tu1c.jpg",
-    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/body_bad_gyal_jsbzut.jpg",
-    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/buffalo_z4svwx.jpg"
-
-  ]
-  mario_item_names = ["Fax fur jacket", "Bad Byal x Bershka bodysuit", "Buffalo Sneakers"]
-  mario_item_descriptions = [
-    "Faux fur jacket, bought it second handed already. It's super cozy and perfect for the winter",
-    "Used only twice. This is the body from the Bad Byal collection from Bershka. Really nice for parties",
-    "Barely used white buffalos. I need to get rid of them because they don't fit me. I accept some other buffalo in size 39 or 40"
-  ]
-
-  mario_item_brands = ["", "Bershka", "Buffalo"]
-  mario_item_sizes = ["M", "M", "38"]
-  mario_item_colors = ["brown", "pink", "white"]
-
-  mario_items.each_with_index do |i, index|
-    item = Item.new(
-      name: mario_item_names[index],
-      description: mario_item_descriptions[index],
-      brand: mario_item_brands[index],
-      size: mario_item_sizes[index],
-      color: mario_item_colors[index]
-    )
-
-    mario_item_photo = URI.open(mario_item_photos[index])
-    item.photo.attach(io: mario_item_photo, filename: item.name, content_type: 'image/png')
-    item.user = User.find_by nickname: "mariorzgz"
-    item.save!
-    puts "Item #{item.name} created!"
-  end
-
-  mario_outfits = Array.new(2)
-  mario_outfit_descriptions = [
-    "Wearing the body from bershka for the first time ✨",
-    "Love spring weather ✨"
-  ]
-  mario_outfit_photos = [
-    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400947/outfit_with_body_ykmiqp.jpg",
-    "https://res.cloudinary.com/mariorzgz/image/upload/v1646400949/outfit_without_items_lgieud.jpg"
-  ]
-
-  mario_outfits.each_with_index do |o, index|
-    outfit = Outfit.new(
-      description: mario_outfit_descriptions[index]
-    )
-    outfit_photo = URI.open(mario_outfit_photos[index])
-    outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-    outfit.user = User.find_by nickname: "mariorzgz"
-    outfit.save!
-    puts "Outfit created"
-  end
-
-  mario_outfits = Outfit.where("user_id = ?", User.last.id)
-  mario_items = Item.where("user_id = ?", User.last.id)
-
-  ItemOutfit.create!(
-    outfit: mario_outfits.first,
-    item: mario_items.second
-  )
-
-  Order.create!(
-    buyer: User.find_by(nickname: 'Jaqueline'),
-    offered_item: User.find_by(nickname: 'Jaqueline').items.third,
-    seller: User.find_by(nickname: 'mariorzgz'),
-    desired_item: User.find_by(nickname: 'mariorzgz').items.last
-  )
-
-  puts "First order created"
-
-  Order.create!(
-    buyer: User.find_by(nickname: 'Jaqueline'),
-    offered_item: User.find_by(nickname: 'Jaqueline').items.second,
-    seller: User.find_by(nickname: 'mariorzgz'),
-    desired_item: User.find_by(nickname: 'mariorzgz').items.second
-  )
-
-  puts "Second order created"
-
-# Ends User Mario
