@@ -5,9 +5,9 @@ class PagesController < ApplicationController
     @outfits = Outfit.all.order('created_at DESC')
     @users = User.all
     if user_signed_in?
-      @people_you_may_like = User.where("id != ?", current_user.id)
+      @people_you_may_like = User.where("id != ?", current_user.id).first(5)
     else
-      @people_you_may_like = User.first(4)
+      @people_you_may_like = User.first(5)
     end
   end
 
