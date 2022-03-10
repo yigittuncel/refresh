@@ -104,9 +104,85 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
+# Here starts user Vanessa
+
+vanessa_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
+
+vanessa = User.new(
+  email: "vanessa@vanessa.com",
+  password: "vanessa@vanessa.com",
+  nickname: "Vanessa"
+)
+
+vanessa.photo.attach(io: vanessa_photo, filename: vanessa.email, content_type: 'image/png')
+vanessa.save!
+puts "User Vanessa has been created"
+
+vanessa_items = Array.new(1)
+vanessa_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/63f76b10faf2f5e6454474802db6b212.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
+]
+
+vanessa_item_names = ["Shirt 'Roman'"]
+vanessa_item_descriptions = [
+  "White oversize shirt, plain colored and out of jersey"
+]
+
+vanessa_item_brands = ["About You"]
+vanessa_item_sizes = ["XS"]
+vanessa_item_colors = ["white"]
+
+vanessa_items.each_with_index do |i, index|
+  item = Item.new(
+    name: vanessa_item_names[index],
+    description: vanessa_item_descriptions[index],
+    brand: vanessa_item_brands[index],
+    size: vanessa_item_sizes[index],
+    color: vanessa_item_colors[index]
+  )
+
+  vanessa_item_photo = URI.open(vanessa_item_photos[index])
+  item.photo.attach(io: vanessa_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Vanessa"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+vanessa_outfits = Array.new(1)
+vanessa_outfit_descriptions = [
+  "Love oversize."
+]
+vanessa_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/e060a702fb296bcc1f8ef712caae753b.jpg?quality=75&height=800&width=600"
+]
+
+vanessa_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: vanessa_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(vanessa_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Vanessa"
+  outfit.save!
+  puts "Outfit created"
+end
+
+vanessa_outfits = Outfit.where("user_id = ?", User.last.id)
+vanessa_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: vanessa_outfits.first,
+  item: vanessa_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Vanessa
+
+
 # Here starts user Tara
 
-tara_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40ed0bbb7626f89f7a.jpg")
+tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
 
 tara = User.new(
   email: "tara@tara.com",
@@ -125,7 +201,7 @@ tara_item_photos = [
 
 tara_item_names = ["Jeans 'Penelope'"]
 tara_item_descriptions = [
-  "Plain coloured hoodie, longsleeve and loose fit. Made out of cotton from organic farming."
+  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
 ]
 
 tara_item_brands = ["Guido Mario Kretschmer"]
@@ -150,7 +226,7 @@ end
 
 tara_outfits = Array.new(1)
 tara_outfit_descriptions = [
-  "These jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
+  "Enjoying the first sunny days of spring."
 ]
 tara_outfit_photos = [
   "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
@@ -177,7 +253,7 @@ ItemOutfit.create!(
 
 puts "Outfit with tagged items created"
 
-# Here ends user
+# Here ends user Tara
 
 # Here starts user Louis
 
@@ -262,7 +338,7 @@ puts "Outfit with tagged items created"
 
 # Here starts user Yigit
 
-yigit_photo = URI.open("https://files.slack.com/files-pri/T02NE0241-F03689L1NHL/1564914639910.jpeg")
+yigit_photo = URI.open("https://res.cloudinary.com/mariorzgz/image/upload/v1646905514/yigit_avatar.jpg")
 
 yigit = User.new(
   email: "yigit@yigit.com",
@@ -274,41 +350,12 @@ yigit.photo.attach(io: yigit_photo, filename: yigit.email, content_type: 'image/
 yigit.save!
 puts "User Yigit has been created"
 
-yigit_items = Array.new(1)
-yigit_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/61be01e5d77afffa4892cb1c8890a734.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600"
-]
-yigit_item_names = ["Sweatshirt"]
-yigit_item_descriptions = [
-  "Plain coloured hoodie, longsleeve and loose fit. Made out of cotton from organic farming."
-]
-
-yigit_item_brands = ["About You"]
-yigit_item_sizes = ["M"]
-yigit_item_colors = ["white"]
-
-yigit_items.each_with_index do |i, index|
-  item = Item.new(
-    name: yigit_item_names[index],
-    description: yigit_item_descriptions[index],
-    brand: yigit_item_brands[index],
-    size: yigit_item_sizes[index],
-    color: yigit_item_colors[index]
-  )
-
-  yigit_item_photo = URI.open(yigit_item_photos[index])
-  item.photo.attach(io: yigit_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Yigit"
-  item.save!
-  puts "Item #{item.name} created!"
-end
-
 yigit_outfits = Array.new(1)
 yigit_outfit_descriptions = [
   "Enjoying the Austrian mountains in my favourite shirt"
 ]
 yigit_outfit_photos = [
-  "https://files.slack.com/files-pri/T02NE0241-F036EUFKRLK/img_20200816_125402_2.jpg"
+  "https://res.cloudinary.com/mariorzgz/image/upload/v1646905514/yigit_outfit.jpg"
 ]
 
 yigit_outfits.each_with_index do |o, index|
@@ -323,16 +370,8 @@ yigit_outfits.each_with_index do |o, index|
 end
 
 yigit_outfits = Outfit.where("user_id = ?", User.last.id)
-yigit_items = Item.where("user_id = ?", User.last.id)
 
-ItemOutfit.create!(
-  outfit: yigit_outfits.first,
-  item: yigit_items.first
-)
-
-puts "Outfit with tagged items created"
-
-#Here ends user Yigit
+# Here ends user Yigit
 
 # Here starts the third user / Riccardo
 
