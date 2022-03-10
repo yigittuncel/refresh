@@ -33,7 +33,7 @@
       %>
       <%= f.input :content,
           label: false,
-          placeholder: "Message ##{@chatroom.name}",
+          placeholder: "Say something to #{@chatroom.order.buyer == current_user ? @chatroom.order.seller.nickname : @chatroom.order.buyer.nickname }",
           wrapper_html: {class: "flex-grow-1 form-message"}
         %>
         <%= f.submit "Send", class: "btn btn-primary px-4" %>
