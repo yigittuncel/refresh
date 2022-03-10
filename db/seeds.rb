@@ -18,7 +18,110 @@ puts "Previous outfits deleted..."
 User.destroy_all
 puts "Previous users deleted..."
 
-# Here starts the first user
+# Here starts user Lena
+
+lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-gercke.jpg")
+
+lena = User.new(
+  email: "lena@lena.com",
+  password: "lena@lena.com",
+  nickname: "Lena"
+)
+
+lena.photo.attach(io: lena_photo, filename: lena.email, content_type: 'image/png')
+lena.save!
+puts "User Lena has been created"
+
+lena_items = Array.new(5)
+lena_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/9b372fa94cffe3aafda0001103128a0b.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/540287c2e5f5ce8ddeac96148a490120.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400",
+  "https://cdn.aboutstatic.com/file/images/03c9e9d56ad31f1a72ad3db5f1cba822.jpg?quality=75&height=534&width=400"
+
+]
+lena_item_names = ["Pullover", "Pants 'Raven'", "Ankle boots", "Oversized sweater", "Pants 'Mia'"]
+lena_item_descriptions = [
+  "A very stylish long-sleeved rib knit pullover. The colour looks really fresh and nice.",
+  "This stylish black trousers are plain coloured and made out of faux leather. They are bootcut and high waist.",
+  "These leather boots have platform heels and are in colour-blocking style with the colours black and white. The leather is very smooth and you have a side-zip. The heel is medium high, about 5 cm.",
+  "Fine knit oversized sweater, made out of 52% Alpaca wool. The sweater has a long cut and a normal fit. One of the best things is the soft feel.",
+  "Plain coloured high waist trousers with wide leg. The trousers have side pockets and contrasts seams. 100% leather."
+]
+
+lena_item_brands = ["LeGer", "LeGer", "LeGer", "LeGer", "LeGer"]
+lena_item_sizes = ["S", "S", "38", "36", "36"]
+lena_item_colors = ["pink", "black", "black and white", "lilac", "black"]
+
+lena_items.each_with_index do |i, index|
+  item = Item.new(
+    name: lena_item_names[index],
+    description: lena_item_descriptions[index],
+    brand: lena_item_brands[index],
+    size: lena_item_sizes[index],
+    color: lena_item_colors[index]
+  )
+
+  lena_item_photo = URI.open(lena_item_photos[index])
+  item.photo.attach(io: lena_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Lena"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+lena_outfits = Array.new(2)
+lena_outfit_descriptions = [
+  "I love this outfit, because I think the combination of the fresh pink sweater with the dark leather trouser makes it look both elegant and easy-going.",
+  "Very cool look, that I love to wear on weekends for going out."
+]
+lena_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
+  "https://cdn.aboutstatic.com/file/images/a0177f681f7a181753008ee45d0d0f16.jpg?quality=75&height=534&width=400"
+]
+
+lena_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: lena_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(lena_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Lena"
+  outfit.save!
+  puts "Outfit created"
+end
+
+lena_outfits = Outfit.where("user_id = ?", User.last.id)
+lena_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.first
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.second
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.first,
+  item: lena_items.third
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.second,
+  item: lena_items.fourth
+)
+
+ItemOutfit.create!(
+  outfit: lena_outfits.second,
+  item: lena_items.fifth
+)
+
+puts "Outfit with tagged items created"
+
+# Here starts user Jaqueline
 
 jaqueline_photo = URI.open("https://secure.gravatar.com/avatar/e1637014c2818e4cd87dc435fa3b0d41?s=500&d=mm&r=g")
 
@@ -179,82 +282,6 @@ puts "Outfit with tagged items created"
 
 # Here ends user Vanessa
 
-
-# Here starts user Tara
-
-tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
-
-tara = User.new(
-  email: "tara@tara.com",
-  password: "tara@tara.com",
-  nickname: "Tara"
-)
-
-tara.photo.attach(io: tara_photo, filename: tara.email, content_type: 'image/png')
-tara.save!
-puts "User Tara has been created"
-
-tara_items = Array.new(1)
-tara_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/710f3aa0ad5397278e2d4e4861086bc8.jpg?quality=75&height=534&width=400"
-]
-
-tara_item_names = ["Jeans 'Penelope'"]
-tara_item_descriptions = [
-  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
-]
-
-tara_item_brands = ["Guido Mario Kretschmer"]
-tara_item_sizes = ["M"]
-tara_item_colors = ["denim blue"]
-
-tara_items.each_with_index do |i, index|
-  item = Item.new(
-    name: tara_item_names[index],
-    description: tara_item_descriptions[index],
-    brand: tara_item_brands[index],
-    size: tara_item_sizes[index],
-    color: tara_item_colors[index]
-  )
-
-  tara_item_photo = URI.open(tara_item_photos[index])
-  item.photo.attach(io: tara_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Tara"
-  item.save!
-  puts "Item #{item.name} created!"
-end
-
-tara_outfits = Array.new(1)
-tara_outfit_descriptions = [
-  "Enjoying the first sunny days of spring."
-]
-tara_outfit_photos = [
-  "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
-]
-
-tara_outfits.each_with_index do |o, index|
-  outfit = Outfit.new(
-    description: tara_outfit_descriptions[index]
-  )
-  outfit_photo = URI.open(tara_outfit_photos[index])
-  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Tara"
-  outfit.save!
-  puts "Outfit created"
-end
-
-tara_outfits = Outfit.where("user_id = ?", User.last.id)
-tara_items = Item.where("user_id = ?", User.last.id)
-
-ItemOutfit.create!(
-  outfit: tara_outfits.first,
-  item: tara_items.first
-)
-
-puts "Outfit with tagged items created"
-
-# Here ends user Tara
-
 # Here starts user Louis
 
 louis_photo = URI.open("https://i.pinimg.com/originals/4f/b4/9e/4fb49eed329eff40ed0bbb7626f89f7a.jpg")
@@ -335,6 +362,81 @@ ItemOutfit.create!(
 puts "Outfit with tagged items created"
 
 # Here ends user Louis
+
+# Here starts user Tara
+
+tara_photo = URI.open("https://live.staticflickr.com/4201/34145314604_e853bb9b2b_6k.jpg")
+
+tara = User.new(
+  email: "tara@tara.com",
+  password: "tara@tara.com",
+  nickname: "Tara"
+)
+
+tara.photo.attach(io: tara_photo, filename: tara.email, content_type: 'image/png')
+tara.save!
+puts "User Tara has been created"
+
+tara_items = Array.new(1)
+tara_item_photos = [
+  "https://cdn.aboutstatic.com/file/images/710f3aa0ad5397278e2d4e4861086bc8.jpg?quality=75&height=534&width=400"
+]
+
+tara_item_names = ["Jeans 'Penelope'"]
+tara_item_descriptions = [
+  "Those jeans are loose fit, mid waist with maxi length. The attached pockets make them look special."
+]
+
+tara_item_brands = ["Guido Mario Kretschmer"]
+tara_item_sizes = ["M"]
+tara_item_colors = ["denim blue"]
+
+tara_items.each_with_index do |i, index|
+  item = Item.new(
+    name: tara_item_names[index],
+    description: tara_item_descriptions[index],
+    brand: tara_item_brands[index],
+    size: tara_item_sizes[index],
+    color: tara_item_colors[index]
+  )
+
+  tara_item_photo = URI.open(tara_item_photos[index])
+  item.photo.attach(io: tara_item_photo, filename: item.name, content_type: 'image/png')
+  item.user = User.find_by nickname: "Tara"
+  item.save!
+  puts "Item #{item.name} created!"
+end
+
+tara_outfits = Array.new(1)
+tara_outfit_descriptions = [
+  "Enjoying the first sunny days of spring."
+]
+tara_outfit_photos = [
+  "https://cdn.aboutstatic.com/file/images/f6a10792f23437f5642cfea756948863.jpg?quality=75&height=534&width=400"
+]
+
+tara_outfits.each_with_index do |o, index|
+  outfit = Outfit.new(
+    description: tara_outfit_descriptions[index]
+  )
+  outfit_photo = URI.open(tara_outfit_photos[index])
+  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
+  outfit.user = User.find_by nickname: "Tara"
+  outfit.save!
+  puts "Outfit created"
+end
+
+tara_outfits = Outfit.where("user_id = ?", User.last.id)
+tara_items = Item.where("user_id = ?", User.last.id)
+
+ItemOutfit.create!(
+  outfit: tara_outfits.first,
+  item: tara_items.first
+)
+
+puts "Outfit with tagged items created"
+
+# Here ends user Tara
 
 # Here starts user Riccardo
 
@@ -693,106 +795,3 @@ yigit_outfits = Outfit.where("user_id = ?", User.last.id)
   puts "Second order created"
 
 # Ends User Mario
-
-#Starts with user Lena
-
-lena_photo = URI.open("https://image.gala.de/22297492/t/jg/v5/w1440/r1/-/lena-gercke.jpg")
-
-lena = User.new(
-  email: "lena@lena.com",
-  password: "lena@lena.com",
-  nickname: "Lena"
-)
-
-lena.photo.attach(io: lena_photo, filename: lena.email, content_type: 'image/png')
-lena.save!
-puts "User Lena has been created"
-
-lena_items = Array.new(5)
-lena_item_photos = [
-  "https://cdn.aboutstatic.com/file/images/e0cefda9fe4e175e33d95daddd3c434f.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/453929312adda01d01b5666ff8dfe430.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/9b372fa94cffe3aafda0001103128a0b.png?bg=F4F4F5&quality=75&trim=1&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/540287c2e5f5ce8ddeac96148a490120.png?bg=F4F4F5&quality=75&trim=1&height=534&width=400",
-  "https://cdn.aboutstatic.com/file/images/03c9e9d56ad31f1a72ad3db5f1cba822.jpg?quality=75&height=534&width=400"
-
-]
-lena_item_names = ["Pullover", "Pants 'Raven'", "Ankle boots", "Oversized sweater", "Pants 'Mia'"]
-lena_item_descriptions = [
-  "A very stylish long-sleeved rib knit pullover. The colour looks really fresh and nice.",
-  "This stylish black trousers are plain coloured and made out of faux leather. They are bootcut and high waist.",
-  "These leather boots have platform heels and are in colour-blocking style with the colours black and white. The leather is very smooth and you have a side-zip. The heel is medium high, about 5 cm.",
-  "Fine knit oversized sweater, made out of 52% Alpaca wool. The sweater has a long cut and a normal fit. One of the best things is the soft feel.",
-  "Plain coloured high waist trousers with wide leg. The trousers have side pockets and contrasts seams. 100% leather."
-]
-
-lena_item_brands = ["LeGer", "LeGer", "LeGer", "LeGer", "LeGer"]
-lena_item_sizes = ["S", "S", "38", "36", "36"]
-lena_item_colors = ["pink", "black", "black and white", "lilac", "black"]
-
-lena_items.each_with_index do |i, index|
-  item = Item.new(
-    name: lena_item_names[index],
-    description: lena_item_descriptions[index],
-    brand: lena_item_brands[index],
-    size: lena_item_sizes[index],
-    color: lena_item_colors[index]
-  )
-
-  lena_item_photo = URI.open(lena_item_photos[index])
-  item.photo.attach(io: lena_item_photo, filename: item.name, content_type: 'image/png')
-  item.user = User.find_by nickname: "Lena"
-  item.save!
-  puts "Item #{item.name} created!"
-end
-
-lena_outfits = Array.new(2)
-lena_outfit_descriptions = [
-  "I love this outfit, because I think the combination of the fresh pink sweater with the dark leather trouser makes it look both elegant and easy-going.",
-  "Very cool look, that I love to wear on weekends for going out."
-]
-lena_outfit_photos = [
-  "https://cdn.aboutstatic.com/file/images/f381c62d33fbb657f3ba4991de1345ac.jpg?quality=75&height=800&width=600",
-  "https://cdn.aboutstatic.com/file/images/a0177f681f7a181753008ee45d0d0f16.jpg?quality=75&height=534&width=400"
-]
-
-lena_outfits.each_with_index do |o, index|
-  outfit = Outfit.new(
-    description: lena_outfit_descriptions[index]
-  )
-  outfit_photo = URI.open(lena_outfit_photos[index])
-  outfit.photo.attach(io: outfit_photo, filename: outfit.description, content_type: 'image/png')
-  outfit.user = User.find_by nickname: "Lena"
-  outfit.save!
-  puts "Outfit created"
-end
-
-lena_outfits = Outfit.where("user_id = ?", User.last.id)
-lena_items = Item.where("user_id = ?", User.last.id)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.first,
-  item: lena_items.first
-)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.first,
-  item: lena_items.second
-)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.first,
-  item: lena_items.third
-)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.second,
-  item: lena_items.fourth
-)
-
-ItemOutfit.create!(
-  outfit: lena_outfits.second,
-  item: lena_items.fifth
-)
-
-puts "Outfit with tagged items created"
