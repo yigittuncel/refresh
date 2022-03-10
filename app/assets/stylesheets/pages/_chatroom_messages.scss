@@ -1,6 +1,8 @@
 .messages {
   display: flex;
   flex-direction: column;
+  height: 70vh;
+  overflow: auto;
 }
 
 .message-box {
